@@ -1,9 +1,11 @@
 # List of all Verilog source files to include in this build.
 # Used by both synthesis and RTL simulation.
 synthesis.inputs.input_files: [
+  # BSG utilities
+  "${bsg_root}/bsg_misc/bsg_defines.v",
   # TODO: list verilog files
-  # "EXAMPLE_PLEASE_DELETE_ME.v",
-  "v/rom_sbox.v",
+  "v/rom_rc.v",
+  
 ]
 synthesis.inputs.input_files_meta: [append, subst]
 

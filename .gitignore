@@ -2,7 +2,7 @@
 */verdiLog/*
 */out/*
 */__pycache__/*
-hammer.log
+*.log
 output.json
 novas.conf
 *.swp

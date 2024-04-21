@@ -271,6 +271,11 @@ endmodule
 
 module rom_sbox_testbench();
 
+    initial begin
+        $dumpfile("rom_sbox.vcd");
+        $dumpvars(0, rom_sbox_testbench);
+    end
+
     reg  [7:0] rom_addr;
     wire [7:0] data_o;
 

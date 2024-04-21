@@ -64,4 +64,10 @@ def test():
     print("KeyList:", len(kr) // 16)
     print(kl)
 
-test()
+# test()
+
+for i in range(len(SBOX)):
+    #print(f"8'h{format(i, '02x')}: rom_data = 8'h{format(SBOX[i], '02x')};")
+
+    print(f"assign rom_data[8'h{format(i, '02x')}]= 8'h{format(SBOX[i], '02x')};")
+    #assign sbox[8'h00] = 8'h63

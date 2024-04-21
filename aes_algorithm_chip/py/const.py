@@ -69,5 +69,5 @@ def test():
 for i in range(len(SBOX)):
     #print(f"8'h{format(i, '02x')}: rom_data = 8'h{format(SBOX[i], '02x')};")
 
-    print(f"assign rom_data[8'h{format(i, '02x')}]= 8'h{format(SBOX[i], '02x')};")
-    #assign sbox[8'h00] = 8'h63
+    print(f"#10 rom_addr = 8'h{format(i, '02x')};")
+  #10 rom_addr = 8'h01;

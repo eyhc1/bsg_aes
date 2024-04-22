@@ -66,22 +66,22 @@ def test():
 
 
 if __name__ == '__main__':
-    # test()
+    test()
     # for i in range(len(SBOX)):
-    #     #print(f"8'h{format(i, '02x')}: rom_data = 8'h{format(SBOX[i], '02x')};")
+    #     print(f"8'h{format(i, '02x')}: rom_data = 8'h{format(SBOX[i], '02x')};")
 
     #     print(f"#10 rom_addr = 8'h{format(i, '02x')};")
     #   #10 rom_addr = 8'h01;
     
-    f = open("rom_rc.txt", "w")
+    # f = open("rom_rc.txt", "w")
 
-    for i in RC:
-        #  print lines of verilog binary strings, e.g.
-        #    1001_10101_10011_1101
-        f.write(f"{i:008b}\n")
-        # f.write(f"{i:02x}\n")
-        # print(f"{i:008b}")
-    f.close()
+    # for i in RC:
+    #     #  print lines of verilog binary strings, e.g.
+    #     #    1001_10101_10011_1101
+    #     f.write(f"{i:008b}\n")
+    #     # f.write(f"{i:02x}\n")
+    #     # print(f"{i:008b}")
+    # f.close()
         
-    bsg_ascii_to_rom("rom_rc.txt", "rom_rc", zero=1, spool=open("rom_rc.v", "w"))
+    # bsg_ascii_to_rom("rom_rc.txt", "rom_rc", zero=1, spool=open("rom_rc.v", "w"))
         

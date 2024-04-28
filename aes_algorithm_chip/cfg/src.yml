@@ -4,7 +4,8 @@ synthesis.inputs.input_files: [
   # BSG utilities
   "${bsg_root}/bsg_misc/bsg_defines.v",
   # TODO: list verilog files
-  "v/rom_rc.v",
+  # "v/round_key.v",
+  "v/rom_sbox.v",
   
 ]
 synthesis.inputs.input_files_meta: [append, subst]

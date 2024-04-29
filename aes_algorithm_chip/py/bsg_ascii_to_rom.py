@@ -42,9 +42,9 @@ def bsg_ascii_to_rom(filename, modulename, zero=0, spool=sys.stdout):
                         # http://stackoverflow.com/questions/2072351/python-conversion-from-binary-string-to-hexadecimal
                         hstr = '%0*X' % ((len(digits_only) + 3) // 4, int(digits_only, 2))
 
-                        print(str(i).rjust(10)+": data_o = width_p ' (" + str(len(digits_only))+ "'b"+line+");"+" // 0x"+hstr, file=spool)
+                        # print(str(i).rjust(10)+": data_o = width_p ' (" + str(len(digits_only))+ "'b"+line+");"+" // 0x"+hstr, file=spool)
                         # EDT
-                        # print(str(i).rjust(10)+": data_o = width_p ' (" + str(len(digits_only))+ "'h"+line+");", file=spool)
+                        print(str(i).rjust(10)+": data_o = " + str(len(digits_only))+ "'b"+line+";"+" // 0x"+hstr, file=spool)
                     i = i + 1
                 else :
                     print("                                 // " + line, file=spool)

@@ -1,20 +1,3 @@
-module key_expansion(
-    input  [255:0] initial_key, //temporary initial key, need to be changed to random key later
-    output reg [128 * 15 - 1:0]round_key
-);
-
-    // should be a module here to generate random key
-
-
-
-    // should be a module here to generate random key
-
-    
-
-
-endmodule
-
-
 module round_key(
     input [255:0] k,
     input [3:0] r,
@@ -52,9 +35,9 @@ module round_key(
                     if  (i < 4*8) begin
                         temp_k[i+7:i] ^= kg[i+7:i];
                     end
-                    else if (kl == 32 && (i >>2 ) == 4'b100) begin
+                    else if (kl == 32 && (i >> 2) == 4'b100) begin
                         rom_sbox kg_0 (.rom_addr(temp_k[(i-4*8)+:8]), .data_o(sub));
-                        temp_k[i] ^= sub;
+                        temp_k[i+7:i] ^= sub;
                     end
                     else begin
                         temp_k[i+7:i] ^= temp_k[(i-4*8)+:8];
@@ -66,25 +49,32 @@ module round_key(
     end
 endmodule
 
-module all_key(
-    input [255:0] k,
-    output reg [239:0] result
-);
-    reg [255:0] k_all [0:10];
-    reg [255:0] knew;
-    integer i;
+
+
+
+module round_key_tb;
+    reg [255:0] k;
+    reg [3:0] r;
+    wire [15:0] result;
+
+    
+    // Instantiate the unit under test (UUT)
+    round_key DUT (
+        .k(k), 
+        .r(r), 
+        .result(result)
+    );
 
     initial begin
-        k_all[0] = k;
-        for (i = 1; i <= 7; i = i + 1) begin
-            knew = round_key(k_all[i-1], i);
-            k_all[i] = knew;
-        end
+        #1;
+        assign k = 256'h6464646464646464646464646464646464646464646464646464646464646464;
+        assign r = 4'd14;
+        #1;
+        // Finish the simulation
+        $finish;
+    end
 
-        for (i = 0; i < 240; i = i + 1) begin
-            result[i] = k_all[i/$size(k)][i%$size(k)];
-        end
+    initial begin
+        $monitor("At time %t, k = %b, r = %b, result = %b", $time, k, r, result);
     end
 endmodule
-
-

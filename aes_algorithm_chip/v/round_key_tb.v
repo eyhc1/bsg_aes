@@ -3,9 +3,9 @@ module round_key_tb();
         $dumpfile("round_key.vcd");
         $dumpvars(0, round_key_tb);
     end
-    reg [255:0] k;
-    reg [4:0] r;
-    reg [255:0] result;
+    reg [0:255] k;
+    reg [0:4] r;
+    reg [0:255] result;
 
     
     // Instantiate the unit under test (UUT)
@@ -17,12 +17,14 @@ module round_key_tb();
 
     initial begin
         
-        #1;
+        #1000;
         k = 256'h6464646464646464646464646464646464646464646464646464646464646464;
         r = 4'd1;
         #1;
 
-        #1;
+
+
+        #1000;
         k = 256'h603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4;
         r = 4'd1;
         #1;

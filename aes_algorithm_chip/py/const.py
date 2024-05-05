@@ -56,9 +56,11 @@ def all_key(k):
 
 def test():
     k0 = [100]*32
+    
+    hex_list = [96, 61, 235, 16, 21, 202, 113, 190, 43, 115, 174, 240, 133, 125, 119, 129, 31, 53, 44, 7, 59, 97, 8, 215, 45, 152, 16, 163, 9, 20, 223, 244]
     print("Key0:", ''.join([f'{v:02x}' for v in k0]))
 
-    kr = all_key(k0)
+    kr = all_key(hex_list)
     kl = ',\n'.join([''.join([f'{v:02x}' for v in kr[i:i+16]]) for i in range(0, len(kr), 16)])
 
     print("KeyList:", len(kr) // 16)
@@ -84,4 +86,15 @@ if __name__ == '__main__':
     # f.close()
         
     # bsg_ascii_to_rom("rom_rc.txt", "rom_rc", zero=1, spool=open("rom_rc.v", "w"))
-        
+    
+    
+    # print out the string in reverse
+    # inverted = "603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4"
+    # inverted = [inverted[i:i+2] for i in range(0, len(inverted), 2)]
+    # inverted = inverted[::-1]
+    # inverted = ''.join(inverted)
+    # print(inverted)
+    
+    # hex_list = ["60", "3d", "eb", "10", "15", "ca", "71", "be", "2b", "73", "ae", "f0", "85", "7d", "77", "81", "1f", "35", "2c", "07", "3b", "61", "08", "d7", "2d", "98", "10", "a3", "09", "14", "df", "f4"]
+    # dec_list = [int(i, 16) for i in hex_list]
+    # print(dec_list)

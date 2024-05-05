@@ -1,4 +1,3 @@
-// hi mother fucker
 module rom_sbox (
     input [7:0] rom_addr,
     output logic [7:0] data_o

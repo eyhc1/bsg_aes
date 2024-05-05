@@ -2,9 +2,16 @@
 */verdiLog/*
 */out/*
 */__pycache__/*
+*/work/*
 *.log
 output.json
 novas.conf
 *.swp
 novas.rc
 *.pyc
+*.jou
+*.ini
+*.wlf
+*.vstf
+wlft*
+transcript

@@ -71,7 +71,7 @@ const roundKey = (k, r=0) =>{
             k[i] ^= SBOX[k[i-4]];
         } else { // other byte
             k[i] ^= k[i-4];
-        }   
+        }
     }
 
     return k;

@@ -10,6 +10,7 @@ sim.inputs.tb_input_files: [
   # Testbench top
   "v/round_key_tb.v",
   "v/rom_sbox_tb.v",
+  "v/key_expansion_tb.v",
 
 
   # BSG utilities

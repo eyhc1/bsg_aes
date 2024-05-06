@@ -1,10 +1,3 @@
-`include "v/key_expansion.v"
-`include "v/add_round_key.v"
-`include "v/sub_bytes.v"
-`include "v/shift_rows.v"
-`include "v/mix_columns.v"
-`include "v/encryption_rounds.v"
-
 module aes_encryption(
     // input clk_i,
     // input reset_i,
@@ -12,7 +5,7 @@ module aes_encryption(
     input [255:0] initial_key,
     output reg [127:0] ciphertext
 );
-    logic [1919:0]key_chain ;
+    logic [1919:0] key_chain ;
     logic [127:0] states [15:0] ;
 
     logic [127:0] final_afterSubBytes;
@@ -35,7 +28,7 @@ module aes_encryption(
     genvar i;
     generate
         // 14 rounds
-        for (i = 1; i < 14; i++) begin
+        for (i = 1; i < 14; i++) begin: loop
 
             encryption_rounds round(
                 .current_state(states[i-1]),

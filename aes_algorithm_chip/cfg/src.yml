@@ -4,15 +4,15 @@ synthesis.inputs.input_files: [
   # BSG utilities
   "${bsg_root}/bsg_misc/bsg_defines.v",
   # TODO: list verilog files
-  "v/rom_sbox.v",
-  "v/round_key.v",
-  "v/key_expansion.v",
-  "v/add_round_key.v",
-  "v/sub_bytes.v",
-  "v/shift_rows.v",
-  "v/mix_columns.v",
-  "v/aes_encryption.v",
-  "v/encryption_rounds.v",
+  "v/rom_sbox.sv",
+  "v/round_key.sv",
+  "v/key_expansion.sv",
+  "v/add_round_key.sv",
+  "v/sub_bytes.sv",
+  "v/shift_rows.sv",
+  "v/mix_columns.sv",
+  "v/aes_encryption.sv",
+  "v/encryption_rounds.sv",
 ]
 synthesis.inputs.input_files_meta: [append, subst]
 

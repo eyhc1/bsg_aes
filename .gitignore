@@ -3,6 +3,7 @@
 */out/*
 */__pycache__/*
 */work/*
+work
 *.log
 output.json
 novas.conf
@@ -10,8 +11,31 @@ novas.conf
 novas.rc
 *.pyc
 *.jou
-*.ini
+
+# ---> ModelSim
+# ignore ModelSim generated files and directories (temp files and so on)
+[_@]*
+
+# ignore compilation output of ModelSim
+*.mti
+*.dat
+*.dbs
+*.psm
+*.bak
+*.cmp
+*.jpg
+*.html
+*.bsf
+
+# ignore simulation output of ModelSim
+wlf*
 *.wlf
 *.vstf
-wlft*
-transcript
+*.ucdb
+cov*/
+transcript*
+sc_dpiheader.h
+vsim.dbg
+*.vcd
+
+*.ini

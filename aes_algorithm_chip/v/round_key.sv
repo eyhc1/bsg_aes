@@ -1,4 +1,3 @@
-`include "v/sub_bytes.v"
 module round_key(
     input [0:255] k,
     input [0:3] r,

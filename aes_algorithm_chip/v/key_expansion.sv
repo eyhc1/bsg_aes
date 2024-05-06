@@ -1,4 +1,3 @@
-`include "v/round_key.v"
 module key_expansion(
     input  [0:255] initial_key, //temporary initial key, need to be changed to random key later
     output logic [0:128 * 15 - 1]round_keys

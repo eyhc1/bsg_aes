@@ -1,3 +1,5 @@
+import binascii
+
 def xor_bytes(a, b):
     return bytes(x ^ y for x, y in zip(a, b))
 
@@ -11,7 +13,8 @@ def sub_bytes(state):
 def shift_rows(state):
     rows = [state[i::4] for i in range(4)]
     shifted_rows = [rows[i][i:] + rows[i][:i] for i in range(4)]
-    return bytes(sum(shifted_rows, []))
+    return b''.join(shifted_rows)
+    # return bytes(sum(shifted_rows, []))
 
 def mix_columns(state):
     # This is a simplified and incorrect mix_columns just for illustration.
@@ -52,7 +55,20 @@ def aes_encrypt(plaintext, master_key):
     return state
 
 # Example usage
-plaintext = b"Hello World12345"  # 16 bytes
-master_key = b"0123456789abcdef0123456789abcdef"  # 32 bytes
+plaintext = b'\x00\x11"3DUfw\x88\x99\xaa\xbb\xcc\xdd\xee\xff'  # 16 bytes
+master_key = b"\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f"  # 32 bytes
 encrypted = aes_encrypt(plaintext, master_key)
+print("Plaintext:", plaintext)
 print("Encrypted:", encrypted)
+
+
+hex_string = "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+byte_string = bytes.fromhex(hex_string)
+# print(byte_string)
+
+import binascii
+
+
+hex_representation = binascii.hexlify(encrypted)
+
+print(hex_representation)

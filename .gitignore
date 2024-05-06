@@ -38,4 +38,6 @@ sc_dpiheader.h
 vsim.dbg
 *.vcd
 
+*.bak
+
 *.ini

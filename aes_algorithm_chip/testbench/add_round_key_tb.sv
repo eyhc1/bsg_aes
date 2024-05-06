@@ -25,7 +25,6 @@ module add_round_key_tb();
 
     end
 
-    // 添加一个监视器来观察 result 的变化
     initial begin
         $monitor("At time %d, state = %h, key = %h, result = %h", $time, state, key, result);
     end

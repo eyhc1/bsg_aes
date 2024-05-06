@@ -1,7 +1,7 @@
 module aes_encryption_tb();
     initial begin
-        $fsdbDumpfile("waveform.fsdb");
-        $fsdbDumpvars();
+        // $fsdbDumpfile("waveform.fsdb");
+        // $fsdbDumpvars();
         $dumpfile("aes_encryption.vcd");
         $dumpvars(0, aes_encryption_tb);
     end
@@ -10,7 +10,6 @@ module aes_encryption_tb();
     reg [255:0] initial_key;
     wire [127:0] ciphertext;
 
-    // 实例化 aes_encryption 模块
     aes_encryption DUT (
         .plaintext(plaintext),
         .initial_key(initial_key),
@@ -21,13 +20,11 @@ module aes_encryption_tb();
         #10000;
         plaintext = 128'h00112233445566778899aabbccddeeff;
         initial_key = 256'h000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f;
+        $display("[%d] Send Plaintext: %h with Key: %h", $time, plaintext, initial_key);
         #10000;
+        $display("[%d] Recieve Encrypted Text: %h", $time, ciphertext);
 
         $finish;
 
-    end
-
-    initial begin
-        $monitor("At time %d, ciphertext = %h", $time, ciphertext);
     end
 endmodule

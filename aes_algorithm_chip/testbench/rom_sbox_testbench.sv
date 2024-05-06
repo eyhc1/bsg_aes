@@ -1,5 +1,3 @@
-`timescale 1ns / 1ps
-
 module rom_sbox_testbench();
 
     initial begin

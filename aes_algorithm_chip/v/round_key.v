@@ -1,8 +1,8 @@
-`include "v/rom_sbox.v"
+`include "v/sub_bytes.v"
 module round_key(
     input [0:255] k,
-    input [0:4] r,
-    output reg [0:255] result
+    input [0:3] r,
+    output logic [0:255] result
 );
 
     // logic [0:31]rot_block;
@@ -122,14 +122,13 @@ module generate_block(
     logic [0:31]sub_block;
     logic [0:31]op_sub_block; 
 
-    // logic [0:31] rot_sub;
-    
+
 
 
     assign rot_block = {op_block[8:31],op_block[0:7]};
-    subx sub_1 (.block(rot_block), .subed_block(sub_block));
-    // assign rot_sub = {op_block[0:7], op_block[15:8], op_block[23:16], op_block[31:24]};
-    subx sub_temp (.block(op_block), .subed_block(op_sub_block));
+    sub_bytes #(4) sub_1  (.block(rot_block), .subed_block(sub_block));
+
+    sub_bytes #(4) sub_temp (.block(op_block), .subed_block(op_sub_block));
 
 
     assign temp_block = first_block ? (sub_block ^ rc) : special_block ? op_sub_block : op_block;
@@ -140,16 +139,3 @@ module generate_block(
 endmodule
 
 
-module subx(
-    input [0:31] block,
-    output reg [0:31] subed_block
-);
-
-
-    rom_sbox sbox_1 (.rom_addr(block[0:7]), .data_o(subed_block[0:7]));
-    rom_sbox sbox_2 (.rom_addr(block[8:15]), .data_o(subed_block[8:15]));
-    rom_sbox sbox_3 (.rom_addr(block[16:23]), .data_o(subed_block[16:23]));
-    rom_sbox sbox_4 (.rom_addr(block[24:31]), .data_o(subed_block[24:31]));
-
-
-endmodule

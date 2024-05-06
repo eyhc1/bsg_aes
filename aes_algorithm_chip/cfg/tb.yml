@@ -8,10 +8,15 @@ sim.inputs.tb_incdir_meta: [subst]
 # List of Verilog testbenches (or other sources) needed for simulation only.
 sim.inputs.tb_input_files: [
   # Testbench top
-  "v/round_key_tb.v",
-  "v/rom_sbox_tb.v",
-  "v/key_expansion_tb.v",
-
+  "testbench/round_key_tb.v",
+  "testbench/rom_sbox_tb.v",
+  "testbench/key_expansion_tb.v",
+  "testbench/add_round_key_tb.v",
+  "testbench/sub_bytes_tb.v",
+  "testbench/shift_rows_tb.v",
+  "testbench/mix_columns_tb.v",
+  "testbench/aes_encryption_tb.v",
+  "testbench/encryption_rounds_tb.v",
 
   # BSG utilities
   "${bsg_root}/bsg_misc/bsg_defines.v",

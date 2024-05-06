@@ -7,7 +7,12 @@ synthesis.inputs.input_files: [
   "v/rom_sbox.v",
   "v/round_key.v",
   "v/key_expansion.v",
-  
+  "v/add_round_key.v",
+  "v/sub_bytes.v",
+  "v/shift_rows.v",
+  "v/mix_columns.v",
+  "v/aes_encryption.v",
+  "v/encryption_rounds.v",
 ]
 synthesis.inputs.input_files_meta: [append, subst]
 

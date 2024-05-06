@@ -1,7 +1,7 @@
 `include "v/round_key.v"
 module key_expansion(
     input  [0:255] initial_key, //temporary initial key, need to be changed to random key later
-    output reg [0:128 * 15 - 1]round_keys
+    output logic [0:128 * 15 - 1]round_keys
 );
 
     // should be a module here to generate random key
@@ -9,13 +9,13 @@ module key_expansion(
 
 
     // should be a module here to generate random key
-    reg [0:255] k_1;
-    reg [0:255] k_2;
-    reg [0:255] k_3;
-    reg [0:255] k_4;
-    reg [0:255] k_5;
-    reg [0:255] k_6;
-    reg [0:255] k_7;
+    logic [0:255] k_1;
+    logic [0:255] k_2;
+    logic [0:255] k_3;
+    logic [0:255] k_4;
+    logic [0:255] k_5;
+    logic [0:255] k_6;
+    logic [0:255] k_7;
 
 
     

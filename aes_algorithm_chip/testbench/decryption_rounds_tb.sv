@@ -1,16 +1,16 @@
-module encryption_rounds_tb();
+module decryption_rounds_tb();
     initial begin
         $fsdbDumpfile("waveform.fsdb");
         $fsdbDumpvars();
-        $dumpfile("encryption_rounds.vcd");
-        $dumpvars(0, encryption_rounds_tb);
+        $dumpfile("decryption_rounds.vcd");
+        $dumpvars(0, decryption_rounds_tb);
     end
 
     reg [127:0] current_state;
     reg [127:0] key;
     wire [127:0] next_state;
 
-    encryption_rounds DUT (
+    decryption_rounds DUT (
         .current_state(current_state),
         .key(key),
         .next_state(next_state)
@@ -18,8 +18,8 @@ module encryption_rounds_tb();
 
     initial begin
         #10000;
-        current_state = 128'h00102030405060708090a0b0c0d0e0f0;
-        key = 128'h101112131415161718191a1b1c1d1e1f;
+        current_state = 128'haa5ece06ee6e3c56dde68bac2621bebf;
+        key = 128'h4e5a6699a9f24fe07e572baacdf8cdea;
         #10000;
 
         $finish;

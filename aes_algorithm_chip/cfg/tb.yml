@@ -17,6 +17,14 @@ sim.inputs.tb_input_files: [
   "testbench/mix_columns_tb.sv",
   "testbench/aes_encryption_tb.sv",
   "testbench/encryption_rounds_tb.sv",
+  "testbench/inv_shift_rows_tb.sv",
+  "testbench/rom_inv_sbox_tb.sv",
+  "testbench/inv_sub_bytes_tb.sv",
+  "testbench/multiplier_tb.sv",
+  "testbench/inv_mix_columns_tb.sv",
+  "testbench/aes_decryption_tb.sv",
+  "testbench/decryption_rounds_tb.sv",
+  "testbench/aes_top_tb.sv",
 
   # BSG utilities
   "${bsg_root}/bsg_misc/bsg_defines.v",

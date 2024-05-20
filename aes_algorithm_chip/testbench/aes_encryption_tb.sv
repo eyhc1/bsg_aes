@@ -9,11 +9,13 @@ module aes_encryption_tb();
     reg [127:0] plaintext;
     reg [255:0] initial_key;
     wire [127:0] ciphertext;
+    wire [1919:0] key_chain;
 
     aes_encryption DUT (
         .plaintext(plaintext),
         .initial_key(initial_key),
-        .ciphertext(ciphertext)
+        .ciphertext(ciphertext),
+        .key_chain(key_chain)
     );
 
     initial begin
@@ -22,7 +24,7 @@ module aes_encryption_tb();
         initial_key = 256'h000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f;
         $display("[%d] Send Plaintext: %h with Key: %h", $time, plaintext, initial_key);
         #10000;
-        $display("[%d] Recieve Encrypted Text: %h", $time, ciphertext);
+        $display("[%d] Recieve Encrypted Text: %h, Expanded key: %h", $time, ciphertext, key_chain);
 
         $finish;
 

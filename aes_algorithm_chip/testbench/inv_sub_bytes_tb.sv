@@ -1,20 +1,23 @@
-module sub_bytes_tb #(size = 16);
+module inv_sub_bytes_tb #(size = 16);
     initial begin
-        $dumpfile("sub_bytes.vcd");
-        $dumpvars(0, sub_bytes_tb);
+        $dumpfile("inv_sub_bytes.vcd");
+        $dumpvars(0, inv_sub_bytes_tb);
     end
     reg [size*8-1:0] block;
     wire [size*8-1:0] subed_block;
 
     // 实例化 sub_bytes 模块
-    sub_bytes #(16)  dut (
+    inv_sub_bytes #(16)  dut (
         .block(block),
         .subed_block(subed_block)
     );
 
     initial begin
+        # 10000;
+        block = 128'haa218b56ee5ebeacdd6ecebf26e63c06;
+        # 10000;
 
-        block = 128'h00102030405060708090a0b0c0d0e0f0;
+        $finish;
 
 
     end

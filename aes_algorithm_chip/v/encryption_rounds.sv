@@ -6,7 +6,6 @@ module encryption_rounds(
     logic [127:0] afterSubBytes;
     logic [127:0] afterShiftRows;
     logic [127:0] afterMixColumns;
-    logic [127:0] afterAddroundKey;
 
     sub_bytes #(16) sub_bytes(
     .block(current_state),

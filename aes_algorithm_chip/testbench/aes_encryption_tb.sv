@@ -1,7 +1,7 @@
 module aes_encryption_tb();
     initial begin
-        // $fsdbDumpfile("waveform.fsdb");
-        // $fsdbDumpvars();
+        $fsdbDumpfile("waveform.fsdb");
+        $fsdbDumpvars();
         $dumpfile("aes_encryption.vcd");
         $dumpvars(0, aes_encryption_tb);
     end

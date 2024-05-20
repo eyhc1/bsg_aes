@@ -16,13 +16,12 @@ module key_expansion_tb();
 
         #1000;
         initial_key = 256'h6464646464646464646464646464646464646464646464646464646464646464;
-        #1000;
+        #100000;
 
 
 
-        #1000;
-        initial_key =256'h603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4;
-        #1000;
+        // initial_key =256'h603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4;
+        // #1000;
 
         // Finish the simulation
         $finish;

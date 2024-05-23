@@ -3,10 +3,11 @@ module aes_encryption(
     // input reset_i,
     input [127:0] plaintext,
     input [255:0] initial_key,
-    output reg [127:0] ciphertext
+    output reg [127:0] ciphertext,
+    output reg [1919:0] key_chain
 );
-    logic [1919:0] key_chain ;
-    logic [127:0] states [15:0] ;
+
+    logic [127:0] states [15:0];
 
     logic [127:0] final_afterSubBytes;
     logic [127:0] final_afterShiftRows;
@@ -25,7 +26,6 @@ module aes_encryption(
         .result(states[0])
     );
 
-    
     genvar i;
     generate
         // 14 rounds
@@ -36,26 +36,6 @@ module aes_encryption(
                 .key(key_chain[(1919-i*128) -: 128]),
                 .next_state(states[i])
             );
-            // sub_bytes #(16) sub_bytes(
-            //     .block(states[i-1]),
-            //     .subed_block(afterSubBytes)
-            // );
-
-            // shift_rows shift_rows(
-            //     .block(afterSubBytes),
-            //     .shifted_block(afterShiftRows)
-            // );
-
-            // mix_columns mix_columns(
-            //     .block(afterShiftRows),
-            //     .mixed_block(afterMixColumns)
-            // );
-
-            // add_round_key add_round_key(
-            //     .state(afterMixColumns),
-            //     .key(key_chain[(1919-i*128) -: 128]),
-            //     .result(states[i])
-            // );
         end
         // final round
         sub_bytes #(16) final_sub_bytes(
@@ -72,10 +52,5 @@ module aes_encryption(
             .key(key_chain[127:0]),
             .result(ciphertext)
         );
-        // assign ciphertext = states[2];
-
-            
-
-
     endgenerate
 endmodule

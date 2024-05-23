@@ -13,6 +13,14 @@ synthesis.inputs.input_files: [
   "v/mix_columns.sv",
   "v/aes_encryption.sv",
   "v/encryption_rounds.sv",
+  "v/inv_shift_rows.sv",
+  "v/rom_inv_sbox.sv",
+  "v/inv_sub_bytes.sv",
+  "v/multiplier.sv",
+  "v/inv_mix_columns.sv",
+  "v/aes_decryption.sv",
+  "v/decryption_rounds.sv",
+  "v/aes_top.sv",
 ]
 synthesis.inputs.input_files_meta: [append, subst]
 

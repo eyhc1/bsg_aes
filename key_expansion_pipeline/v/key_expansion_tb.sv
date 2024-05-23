@@ -14,7 +14,7 @@ module key_expansion_tb();
         .*
     );
 
-    parameter CLOCK_PERIOD=20000;
+    parameter CLOCK_PERIOD=10000;
 	initial begin
 		clk_i <= 0;
 		forever #(CLOCK_PERIOD/2) clk_i <= ~clk_i; // Forever toggle the clock

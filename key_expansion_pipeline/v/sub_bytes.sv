@@ -6,7 +6,9 @@ module sub_bytes #(parameter size = 4)(
 
     generate
         for (i = 0; i < size; i = i + 1) begin : roms
-            rom_sbox sbox (.rom_addr(block[i*8 +: 8]), .data_o(subed_block[i*8 +: 8]));
+            rom_sbox sbox 
+                (.rom_addr(block[i*8 +: 8])
+                ,.data_o(subed_block[i*8 +: 8]));
         end
     endgenerate
 endmodule

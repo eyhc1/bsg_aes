@@ -102,8 +102,8 @@ const test = ()=>{
 
     let kr = allKey(k0);
     let kl = kr.map(v=>v.toString(16).padStart(2,"0"))
-      .reduce((c,v,i)=>(c[0|i/16] +=v,c), Array(kr.length/16).fill(""))
-      .join(",\n");
+      .reduce((c,v,i)=>(c[0|i/32] +=v,c), Array(kr.length/16).fill(""))
+      .join("");
 
     console.log("KeyList:", kr.length / 16);
     console.log(kl);

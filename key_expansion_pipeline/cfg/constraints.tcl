@@ -15,7 +15,7 @@
 #
 
 # create_clock -name clk -period 3.3 [get_ports clk_i]
-create_clock -name clk -period 20.0 [get_ports clk_i]
+create_clock -name clk -period 6.6 [get_ports clk_i]
 set_clock_uncertainty 0.050 [get_clocks clk]
 
 # Always set the input/output delay as half periods for clock setup checks

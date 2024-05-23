@@ -9,6 +9,7 @@ module round_key_tb();
     logic [0:3] r;
     logic [0:255] result;
     logic clk_i, reset_i;
+    integer i;
     
     // Instantiate the unit under test (UUT)
     round_key DUT (
@@ -28,7 +29,16 @@ module round_key_tb();
         k <= 256'h6464646464646464646464646464646464646464646464646464646464646464;
         r <= 4'd1;
         repeat(10) @(posedge clk_i);
-        $display("At time %t, k = %h, r = %h, result = %h", $time, k, r, result);
+        // $display("At time %t, k = %h, r = %h, result = %h", $time, k, r, result);
+        $display("%h", result);
+
+        for (i = 2; i < 8; i++) begin
+            k <= result;
+            r <= i;
+            repeat(10) @(posedge clk_i);
+            // $display("At time %t, k = %h, r = %h, result = %h", $time, k, r, result);
+            $display("%h", result);
+        end
 
         // k = 256'h603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4;
         // r = 4'd1;

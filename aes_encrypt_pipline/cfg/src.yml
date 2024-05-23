@@ -1,0 +1,31 @@
+# List of all Verilog source files to include in this build.
+# Used by both synthesis and RTL simulation.
+synthesis.inputs.input_files: [
+  # BSG utilities
+  "${bsg_root}/bsg_misc/bsg_defines.v",
+  "${bsg_root}/bsg_misc/bsg_dff_reset.v",
+  # TODO: list verilog files
+  "v/rom_sbox.sv",
+  "v/round_key.sv",
+  "v/key_expansion.sv",
+  "v/add_round_key.sv",
+  "v/sub_bytes.sv",
+  "v/shift_rows.sv",
+  "v/mix_columns.sv",
+  "v/aes_encryption.sv",
+  "v/encryption_rounds.sv",
+  "v/inv_shift_rows.sv",
+  "v/rom_inv_sbox.sv",
+  "v/inv_sub_bytes.sv",
+  "v/multiplier.sv",
+  "v/inv_mix_columns.sv",
+  "v/aes_decryption.sv",
+  "v/decryption_rounds.sv",
+  "v/aes_top.sv",
+]
+synthesis.inputs.input_files_meta: [append, subst]
+
+# Add synthesis input files to simulation inputs
+# (Only for RTL sim)
+sim.inputs.input_files: synthesis.inputs.input_files
+sim.inputs.input_files_meta: [crossref, subst]

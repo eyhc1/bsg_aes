@@ -1,0 +1,32 @@
+# Search directories for `include directives in simulations
+sim.inputs.tb_incdir: [
+  "${bsg_root}/bsg_misc"
+  # TODO: list any additional directories
+]
+sim.inputs.tb_incdir_meta: [subst]
+
+# List of Verilog testbenches (or other sources) needed for simulation only.
+sim.inputs.tb_input_files: [
+  # Testbench top
+  "testbench/round_key_tb.sv",
+  "testbench/rom_sbox_tb.sv",
+  "testbench/key_expansion_tb.sv",
+  "testbench/add_round_key_tb.sv",
+  "testbench/sub_bytes_tb.sv",
+  "testbench/shift_rows_tb.sv",
+  "testbench/mix_columns_tb.sv",
+  "testbench/aes_encryption_tb.sv",
+  "testbench/encryption_rounds_tb.sv",
+
+  # BSG utilities
+  "${bsg_root}/bsg_misc/bsg_defines.v",
+  "${bsg_root}/bsg_test/bsg_nonsynth_clock_gen.v",
+  "${bsg_root}/bsg_test/bsg_nonsynth_reset_gen.v",
+  "${bsg_root}/bsg_fsb/bsg_fsb_node_trace_replay.v",
+]
+sim.inputs.tb_input_files_meta: [append, subst]
+
+# List of trace files for the simulation
+sim.inputs.trace_files: [
+  # TODO: list any trace files
+]

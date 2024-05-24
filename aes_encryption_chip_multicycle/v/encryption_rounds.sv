@@ -12,24 +12,15 @@ module encryption_rounds(
     logic [127:0] afterShiftRows;
     logic [127:0] afterMixColumns;
 
-    // piplines
+    // pipeline
     bsg_dff_reset #(
-        .width_p(128)
+        .width_p(256)
     )
-    current_state_pipeline (
+    pipeline (
         .clk_i(clk_i),
         .reset_i(reset_i),
-        .data_i(current_state),
-        .data_o(current_state_d1)
-    );
-    bsg_dff_reset #(
-        .width_p(128)
-    )
-    key_pipeline (
-        .clk_i(clk_i),
-        .reset_i(reset_i),
-        .data_i(key),
-        .data_o(key_d1)
+        .data_i({current_state, key}),
+        .data_o({current_state_d1, key_d1})
     );
 
 
@@ -54,8 +45,4 @@ module encryption_rounds(
     .key(key_d1),
     .result(next_state)
     );
-
-   // assign next_state = afterMixColumns;  
-
-
 endmodule

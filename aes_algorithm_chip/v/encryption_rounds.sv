@@ -28,8 +28,4 @@ module encryption_rounds(
     .key(key),
     .result(next_state)
     );
-
-   // assign next_state = afterMixColumns;  
-
-
 endmodule

@@ -4,7 +4,7 @@ module aes_encryption(
     input [127:0] plaintext,
     input [255:0] initial_key,
     output logic [127:0] ciphertext,
-    output logic [1919:0] key_chain
+    output logic [128 * 15 - 1:0] key_chain
 );
 
     logic [127:0] states [15:0];
@@ -36,7 +36,6 @@ module aes_encryption(
     generate
         // 14 rounds
         for (i = 1; i < 14; i++) begin: loop
-
             encryption_rounds round(
                 .clk_i(clk_i),
                 .reset_i(reset_i),
@@ -45,41 +44,33 @@ module aes_encryption(
                 .next_state(states[i])
             );
         end
-        
-        // piplines for the final round
-        bsg_dff_reset #(
-            .width_p(128)
-        )
-        final_state_pipeline (
-            .clk_i(clk_i),
-            .reset_i(reset_i),
-            .data_i(states[13]),
-            .data_o(states_13_d1)
-        );
-        bsg_dff_reset #(
-            .width_p(128)
-        )
-        final_key_pipeline (
-            .clk_i(clk_i),
-            .reset_i(reset_i),
-            .data_i(key_chain[127:0]),
-            .data_o(final_key_d1)
-        );
-        
-        // final round
-        sub_bytes #(16) final_sub_bytes(
-            .block(states_13_d1),
-            .subed_block(final_afterSubBytes)
-        );
-        shift_rows final_shift_rows(
-            .block(final_afterSubBytes),
-            .shifted_block(final_afterShiftRows)
-        );
-
-        add_round_key final_add_round_key(
-            .state(final_afterShiftRows),
-            .key(final_key_d1),
-            .result(ciphertext)
-        );
     endgenerate
+
+    // pipelines for the final round
+    bsg_dff_reset #(
+        .width_p(256)
+    )
+    pipeline (
+        .clk_i(clk_i),
+        .reset_i(reset_i),
+        .data_i({states[13], key_chain[127:0]}),
+        .data_o({states_13_d1, final_key_d1})
+    );
+
+    // final round
+    sub_bytes #(16) final_sub_bytes(
+        .block(states_13_d1),
+        .subed_block(final_afterSubBytes)
+    );
+    shift_rows final_shift_rows(
+        .block(final_afterSubBytes),
+        .shifted_block(final_afterShiftRows)
+    );
+
+    add_round_key final_add_round_key(
+        .state(final_afterShiftRows),
+        .key(final_key_d1),
+        .result(ciphertext)
+    );
+
 endmodule

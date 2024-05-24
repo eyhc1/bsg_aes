@@ -61,7 +61,6 @@ encrypted = aes_encrypt(plaintext, master_key)
 print("Plaintext:", plaintext)
 print("Encrypted:", encrypted)
 
-
 hex_string = "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
 byte_string = bytes.fromhex(hex_string)
 # print(byte_string)

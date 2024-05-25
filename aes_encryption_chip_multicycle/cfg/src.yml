@@ -4,6 +4,12 @@ synthesis.inputs.input_files: [
   # BSG utilities
   "${bsg_root}/bsg_misc/bsg_defines.v",
   "${bsg_root}/bsg_misc/bsg_dff_reset.v",
+  "${bsg_root}/bsg_dataflow/bsg_fifo_1r1w_small_hardened.v",
+  "${bsg_root}/bsg_dataflow/bsg_fifo_tracker.v",
+  "${bsg_root}/bsg_misc/bsg_dff_en.v",
+  "${bsg_root}/bsg_misc/bsg_circular_ptr.v",
+  "${bsg_root}/bsg_mem/bsg_mem_1r1w_sync.v",
+  "${bsg_root}/bsg_mem/bsg_mem_1r1w_sync_synth.v",
   # TODO: list verilog files
   "v/rom_sbox.sv",
   "v/round_key.sv",
@@ -14,6 +20,8 @@ synthesis.inputs.input_files: [
   "v/mix_columns.sv",
   "v/aes_encryption.sv",
   "v/encryption_rounds.sv",
+  "v/buffer.sv",
+  "v/bsg_aes_encrypt.sv",
 ]
 synthesis.inputs.input_files_meta: [append, subst]
 

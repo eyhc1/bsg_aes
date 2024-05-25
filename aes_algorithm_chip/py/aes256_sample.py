@@ -20,6 +20,17 @@ def aes_encrypt(plaintext, key):
 plaintext_example = "00112233445566778899aabbccddeeff"
 key_example = "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
 
+test = "112233445566778899aabbccddeeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+
 # Encrypt and display the output
+# encrypted_output = aes_encrypt(test[:32], test[32:])
 encrypted_output = aes_encrypt(plaintext_example, key_example)
 print("Encrypted Output:", encrypted_output)
+
+
+# plaintext_example = "000000000000000000000000000000af"
+# key_example = "6464646464646464646464646464646464646464646464646464646464646464"
+
+# # Encrypt and display the output
+# encrypted_output = aes_encrypt(plaintext_example, key_example)
+# print("Encrypted Output:", encrypted_output)

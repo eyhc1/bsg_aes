@@ -6,6 +6,7 @@ synthesis.inputs.input_files: [
   "v/sub_bytes.sv",
   "v/round_key.sv",
   "v/key_expansion.sv",
+  "v/keyExpansion.sv",
   "${bsg_root}/bsg_misc/bsg_dff_reset.v",
 ]
 synthesis.inputs.input_files_meta: [append, subst]

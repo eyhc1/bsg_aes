@@ -1,9 +1,15 @@
 module round_key (
     input clk_i,
     input reset_i,
+
     input [0:255] k,
     input [0:3] r,
-    output logic [0:255] result
+    input               v_i,
+    output              ready_o,
+
+    output logic [0:255] result,
+    output logic        v_o,
+    input               yumi_i
 );
 
     // the block for operation
@@ -14,11 +20,15 @@ module round_key (
     logic [0:127] result_1, result_2;
 
     // pipeline results
-    logic [0:127] result_1_d1, result_2_d1;
+    logic [0:127] result_1_d1;
     logic [0:127] k_secondhalf_d1;
 
+    // pipeline 1 controls 
+    logic v_i_d1, ready_o_d1, v_o_d1, yumi_i_d1;
+    // pipeline 2 controls 
+    logic v_i_d2, ready_o_d2, v_o_d2, yumi_i_d2;
+
     // feed appropriate block to the sub_bytes module
-    // TODO: make it so that we only need to instantiate one sub_bytes module. split up if moew than one sub_bytes module is needed
     sub_bytes #(4) 
         sub_1 
             (.block({k[232:255], k[224:231]})
@@ -31,50 +41,36 @@ module round_key (
 
     // Piplines
     bsg_dff_reset #(
-        .width_p(128)
+        .width_p(257)
     )
-    result_1_pipeline (
+    pipeline_1 (
         .clk_i(clk_i),
         .reset_i(reset_i),
-        .data_i(result_1),
-        .data_o(result_1_d1)
-    );
-    bsg_dff_reset #(
-        .width_p(128)
-    )
-    k_secondhalf_pipeline (
-        .clk_i(clk_i),
-        .reset_i(reset_i),
-        .data_i(k[128:255]),
-        .data_o(k_secondhalf_d1)
+        .data_i({result_1, k[128:255], v_i}),
+        .data_o({result_1_d1, k_secondhalf_d1, v_o_d1})
     );
 
     bsg_dff_reset #(
-        .width_p(256)
+        .width_p(257)
     )
     result_pipeline (
         .clk_i(clk_i),
         .reset_i(reset_i),
-        .data_i({result_1_d1, result_2}),
-        .data_o(result)
+        .data_i({result_1_d1, result_2, v_o_d1}),
+        .data_o({result, v_o})
     );
 
 
     genvar i;
     generate
-
         assign result_1[0:31] = sub_block_init ^ k[0:31] ^ ((32'h01000000) << (r-1));
-        // assign result_2[0:31] = sub_block_4 ^ k[128:159];
         assign result_2[0:31] = sub_block_4 ^ k_secondhalf_d1[0:31];
 
         for (i = 1; i < 4; i++) begin : gen_block_1
             assign result_1[i*32 +: 32] = result_1[(i-1)*32 +: 32] ^ k[i*32 +: 32];
         end
         for (i = 5; i < 8; i++) begin : gen_block_2
-            // assign result_2[(i-4)*32 +: 32] = result_2[(i-5)*32 +: 32] ^ k[i*32 +: 32];
             assign result_2[(i-4)*32 +: 32] = result_2[(i-5)*32 +: 32] ^ k_secondhalf_d1[(i-4)*32 +: 32];
         end
     endgenerate
-
-    // assign result = {result_1, result_2};
 endmodule

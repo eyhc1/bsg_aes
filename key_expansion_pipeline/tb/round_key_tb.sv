@@ -9,6 +9,8 @@ module round_key_tb();
     logic [0:3] r;
     logic [0:255] result;
     logic clk_i, reset_i;
+
+    logic v_i, ready_o, v_o, yumi_i;
     integer i;
     
     // Instantiate the unit under test (UUT)
@@ -23,30 +25,32 @@ module round_key_tb();
 	end
 
     initial begin
-        reset_i <= 1; @(posedge clk_i); // Always reset FSMs at start
+        reset_i <= 1; v_i <= 0; @(posedge clk_i); // Always reset FSMs at start
 		// check if enable works properly by writing data when turn on enable
 		reset_i <= 0; 
         k <= 256'h6464646464646464646464646464646464646464646464646464646464646464;
         r <= 4'd1;
-        repeat(10) @(posedge clk_i);
-        // $display("At time %t, k = %h, r = %h, result = %h", $time, k, r, result);
-        $display("%h", result);
+        v_i <= 1;
+        @(posedge clk_i);
+        v_i <= 0;
+        yumi_i <= 0;
+        @(posedge v_o);
+        yumi_i <= 1;
 
-        for (i = 2; i < 8; i++) begin
+        for (i = 2; i <= 8; i++) begin
             k <= result;
             r <= i;
-            repeat(10) @(posedge clk_i);
-            // $display("At time %t, k = %h, r = %h, result = %h", $time, k, r, result);
-            $display("%h", result);
+            v_i <= 1;
+            @(posedge clk_i);
+            v_i <= 0;
+            @(posedge v_o);
+            yumi_i <= 1;
         end
-
-        // k = 256'h603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4;
-        // r = 4'd1;
-        // @(posedge clk_i);
-        // repeat(12) @(posedge clk_i);
-        // $display("At time %t, k = %h, r = %h, result = %h", $time, k, r, result);
-
-        // Finish the simulation
         $finish;
+    end
+
+    always @(posedge clk_i) begin
+        if (v_o)
+        $display("%h", result);
     end
 endmodule

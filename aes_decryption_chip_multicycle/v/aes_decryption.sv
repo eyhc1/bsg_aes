@@ -1,12 +1,13 @@
 module aes_decryption(
     input clk_i,
     input reset_i,
+    input [255:0] key,
     input [127:0] ciphertext,
-    input [128 * 15 - 1:0] key_chain,
     output reg [127:0] plaintext
 );
 
-    logic [127:0] states [15:0] ;
+    logic [127:0] states [15:0];
+    logic [128 * 15 - 1:0] key_chain;
 
     logic [127:0] final_afterSubBytes;
     logic [127:0] final_afterShiftRows;
@@ -16,6 +17,13 @@ module aes_decryption(
     logic [127:0] states_13_d1;
     logic [127:0] final_key_d1;
 
+    // key expansion
+    key_expansion key_expansion(
+        .clk_i(clk_i),
+        .reset_i(reset_i),
+        .initial_key(key),
+        .round_keys(key_chain)
+    );
 
     // initial round
     add_round_key initial_round(

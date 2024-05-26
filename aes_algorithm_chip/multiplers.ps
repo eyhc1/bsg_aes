@@ -1,0 +1,2376 @@
+%!PS-Adobe-3.0
+%%BoundingBox: 0 0 595 841
+%%Title: NovasSoft
+%%CreationDate: Sun May 19 23:46:31 2024
+
+%%Creator: NovasSoft
+%%Version: Verdi_Q-2020.03-SP2-8
+%%Orientation: Landscape
+%%Pages: 1
+%%DocumentFonts: (atend)
+%%EndComments
+
+%%BeginProlog
+
+/C  {rcurveto}        bind def
+/L  {rlineto}         bind def     % dx dy rlineto
+/X  {0 rlineto}       bind def     % dx 0  rlineto
+/Y  {0 exch rlineto}  bind def     % 0  dy rlineto
+/M  {closepath moveto} bind def
+/N  {newpath moveto} bind def
+/WB {gsave translate dup scale} bind def
+/WE {eofill grestore} bind def
+
+/ww 4096 array def
+/wp 4096 array def
+/wo 4096 array def
+/W {wp exch get exec} bind def
+/WC {wp exch get cvx exec} bind def
+
+/get_word_len {
+/last carray length 1 sub def
+/ratio_acc 0 def
+0 1 last {carray exch get ww exch get ratio_acc add /ratio_acc exch def} for
+/word_len1 ratio_acc SETFONT mul def
+/word_len2 0 def
+/last carray length 1 sub def
+0 1 last { wo exch get word_len2 add /word_len2 exch def } for
+Use_Ratio 1 eq
+{/word_len word_len1 def}
+{/word_len word_len2 def} ifelse
+} def
+
+/cxshow0 { % i
+/i exch def
+cscale nextx nexty WB
+i WC
+eofill grestore
+/cwidth1 SETFONT ww i get mul def
+/cwidth2 wo wo_index get def
+Use_Ratio 1 eq
+{/cwidth cwidth1 def}
+{/cwidth cwidth2 def} ifelse
+/nextx nextx cwidth add def
+/wo_index wo_index 1 add def
+} def
+
+/cxshow { % array x y align
+/Y_Offset exch def /align exch def /cy exch def /cx exch def /carray exch def
+/cscale SETFONT 720 div 0.1 mul def
+/nextx 0 def /nexty 0 def
+gsave
+cx cy translate
+SETANGLE rotate
+0 Y_Offset translate
+get_word_len
+align (CENTER) eq {-0.5 word_len mul 0 translate} if
+align (RIGHT) eq {-1.0 word_len mul 0 translate} if
+/wo_index 0 def
+carray {cxshow0} forall % i
+grestore
+} def
+
+
+%%
+%%
+%% Stipple Data
+%%
+%%
+/patternFont 256 dict def
+patternFont begin
+  /FontType 3 def
+  /FontMatrix [1 0 0 1 0 0] def
+  /FontBBox [0 0 1 1] def
+
+  /Encoding 256 array def
+  0 1 255 {Encoding exch /.notdef put} for
+Encoding
+  dup 0 /0 put
+  dup 1 /1 put
+  dup 2 /2 put
+  dup 3 /3 put
+  dup 4 /4 put
+  dup 5 /5 put
+  dup 6 /6 put
+  dup 7 /7 put
+  dup 8 /8 put
+  dup 9 /9 put
+  dup 10 /10 put
+  dup 11 /11 put
+  dup 12 /12 put
+  dup 13 /13 put
+  dup 14 /14 put
+  dup 15 /15 put
+  dup 16 /16 put
+  dup 17 /17 put
+  dup 18 /18 put
+  dup 19 /19 put
+  dup 20 /20 put
+  dup 21 /21 put
+  dup 22 /22 put
+  dup 23 /23 put
+      23 /23 put
+
+  /BuildChar
+    { 0 begin
+       /char exch def
+       /fontdict exch def
+       /charname fontdict /Encoding get char get def
+
+       1 0 0 0 1 1 setcachedevice
+
+       16 16 true
+       [16 0 0 -16 0 16]
+       PatternArray char 1 getinterval cvx
+       imagemask
+      end
+     }bind def  %% BuildChar
+
+   /BuildChar load 0 6 dict put
+%%   /imagemaskmatrix[25 0 0 -25 0 0]def
+
+end  %% patternFont
+
+/PatternFont patternFont definefont pop
+
+/PatternArray 24 array def
+   PatternArray
+   dup   0   <ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff> put
+   dup   1   <9999666666669999999966666666999999996666666699999999666666669999> put
+   dup   2   <1111222244448888111122224444888811112222444488881111222244448888> put
+   dup   3   <eeeeddddbbbb7777eeeeddddbbbb7777eeeeddddbbbb7777eeeeddddbbbb7777> put
+   dup   4   <8888444422221111888844442222111188884444222211118888444422221111> put
+   dup   5   <7777bbbbddddeeee7777bbbbddddeeee7777bbbbddddeeee7777bbbbddddeeee> put
+   dup   6   <8888444422221111888844442222111188884444222211118888444422221111> put
+   dup   7   <0000000000000000000000000000000000000000000000000000000000000000> put
+   dup   8   <ffff202020202020ffff020202020202ffff202020202020ffff020202020202> put
+   dup   9   <8888555522225555888855552222555588885555222255558888555522225555> put
+   dup   10   <0000202020202020f8f820202020202000000404040404041f1f040404040404> put
+   dup   11   <4444000011110000444400001111000044440000111100004444000011110000> put
+   dup   12   <0000222200008888000022220000888800002222000088880000222200008888> put
+   dup   13   <aaaa5555aaaa55555555aaaa5555aaaaaaaa5555aaaa55555555aaaa5555aaaa> put
+   dup   14   <111111111111ffff111111111111ffff111111111111ffff111111111111ffff> put
+   dup   15   <000000001f1f11111111f1f100000000000000001f1f11111111f1f100000000> put
+   dup   16   <000000000000ffff000000000000ffff000000000000ffff000000000000ffff> put
+   dup   17   <c0c020201818040403038080606010100c0c0202818140403030080806060101> put
+   dup   18   <1111222244448888111122224444888811112222444488881111222244448888> put
+   dup   19   <00000800140022004100ff80000000000000001000280044008201ff00000000> put
+   dup   20   <0404040404043c3c2020202020203c3c0404040404043c3c2020202020203c3c> put
+   dup   21   <2222222222222222222222222222222222222222222222222222222222222222> put
+   dup   22   <8420821042082108208410820842082184208210420821082084108208420821> put
+         23   <8888555522225555888855552222555588885555222255558888555522225555> put
+
+
+
+/ginit
+{initgraphics
+% /Times-Roman findfont charSize scalefont setfont
+ shiftRight shiftDown  translate
+ rotateAngle rotate
+ gsave
+ grestore
+ 0.1 0.1 scale
+ newpath
+ 0 setlinewidth
+} bind def
+
+/greset
+{
+  initgraphics
+} bind def
+
+/disableoutput
+{
+  0 0 0 1 1 1 1 0 0 0 
+  setclip
+}bind def
+
+/rightshow     % 'y' no change
+ {dup stringwidth pop
+  0 exch sub
+  0 rmoveto
+  show
+} bind def
+
+/stringheight
+{
+  gsave                        % save current point
+%  disableoutput
+  (Ag) true charpath           % create "Ag" string path
+  flattenpath pathbbox         % get the string bbox llx, lly, UUx, UUy
+  exch pop exch sub            % discard UUx, calculate (UUy - lly)
+  exch pop                     % discard llx
+  grestore                     % restore current point
+}bind def
+
+/findascend
+{
+  stringheight
+  5 mul 6 div
+}bind def
+
+/finddescend
+{
+  stringheight
+  6 div
+}bind def
+/stringshiftleft
+{
+  dup stringwidth pop      % shift left
+  0 exch sub
+  0 rmoveto
+}bind def
+
+/stringshiftcenterX        % shift center X
+{
+  dup stringwidth pop
+  2 div
+  0 exch sub
+  0 rmoveto
+}bind def
+
+/stringshiftcenterY        % shift center Y
+{
+  stringheight
+  2 div
+  0 exch sub
+  0 exch
+  rmoveto
+}bind def
+
+/stringshiftup
+{
+  finddescend              % y offset is descend (positive, up)
+  0 exch                   % x offset is 0
+  rmoveto
+}bind def
+
+/stringshiftdown
+{
+  findascend 0 exch sub    % y offset is -ascend
+  0 exch                   % x offset is 0
+  rmoveto
+}bind def
+
+/normalshow
+{
+  translate
+  rotate
+  moveto
+  show
+  rotate
+  translate
+}bind def
+
+/rshow
+{
+  translate
+  rotate
+  moveto
+  stringshiftleft
+  show
+  rotate
+  translate
+}bind def
+
+/cshow
+{
+  translate
+  rotate
+  moveto
+  stringshiftcenterX
+  stringshiftcenterY
+  show
+  rotate
+  translate
+}bind def
+
+/lbshow
+ {
+  translate
+  rotate
+  moveto
+  stringshiftup
+  show
+  rotate
+  translate
+} bind def
+
+/lcshow
+ {
+  translate
+  rotate
+  moveto
+  stringshiftcenterY
+  show
+  rotate
+  translate
+} bind def
+
+/ltshow
+ {
+  translate
+  rotate
+  moveto
+  stringshiftdown
+  show
+  rotate
+  translate
+} bind def
+
+/rbshow
+ {
+  translate
+  rotate
+  moveto
+  stringshiftleft
+  stringshiftup
+  show
+  rotate
+  translate
+} bind def
+
+/rcshow
+ {
+  translate
+  rotate
+  moveto
+  stringshiftleft
+  stringshiftcenterY
+  show
+  rotate
+  translate
+} bind def
+
+/rtshow
+ {
+  translate
+  rotate
+  moveto
+  stringshiftleft
+  stringshiftdown
+  show
+  rotate
+  translate
+} bind def
+
+/cbshow
+{
+  translate
+  rotate
+  moveto
+  stringshiftcenterX
+  stringshiftup
+  show
+  rotate
+  translate
+}bind def
+
+/ctshow
+{
+  translate
+  rotate
+  moveto
+  stringshiftcenterX
+  stringshiftdown
+  show
+  rotate
+  translate
+}bind def
+
+/setclip
+{
+newpath
+stroke
+ginit
+moveto
+4 {lineto} repeat
+closepath
+clip
+newpath
+} bind def
+
+/header         % string
+ {
+  moveto    % 8.1
+  dup stringwidth pop
+  2 div
+  0 exch sub
+  0 rmoveto
+  show
+} bind def
+
+/footer         % string
+ {
+  moveto
+  dup stringwidth pop
+  2 div
+  0 exch sub
+  0 rmoveto
+  show
+} bind def
+
+/vshowdict 4 dict def
+/vstring
+{ vshowdict begin
+  /thestring exch def
+  /lineskip exch def
+  thestring
+    {
+      /charcode exch def
+      /thechar ( ) dup 0 charcode put def
+      0 lineskip neg rmoveto
+      gsave
+        thechar stringwidth pop 2 div neg 0 rmoveto
+        thechar show
+      grestore
+    } forall
+  end
+} def
+/vshow
+{
+  moveto
+  vstring
+} bind def
+
+/ptsPath
+{
+   /Num exch def
+   /pt1y exch def
+   /pt1x exch def
+   newpath pt1x pt1y moveto
+   Num 1 sub {/pt2y exch def /pt2x exch def pt2x pt2y lineto} repeat
+}bind def
+
+/arcPath
+{
+    /EndAngle   exch def
+    /StartAngle exch def
+    /Radius     exch def
+    /ScaleH     exch def
+    /ScaleW     exch def
+    /CenterY    exch def
+    /CenterX    exch def
+
+    CenterX CenterY translate ScaleW ScaleH scale 0 0 Radius StartAngle EndAngle arc
+}bind def
+
+/fillWithGray
+{
+   /Color exch def  % Color == 2 means this is a color printer 
+   gsave
+   Color 2 eq {} {Color 1 eq {1 setgray} {Color 3 eq {0 setgray} {0.6 setgray} ifelse} ifelse} ifelse
+   fill
+   grestore
+} bind def
+
+/fillWithPattern{ 
+  gsave
+  clip 
+  /PatternFont findfont 96 scalefont setfont 
+%  IsPatternFont 1 ne {/PatternFont findfont 96 scalefont setfont /IsPatternFont 1 store} if
+%  /str 3 string def 
+  /BBoxLLX BBoxLLX 96 div truncate 96 mul def 
+  /BBoxLLY BBoxLLY 96 div truncate 96 mul def 
+
+  /FillRow BBoxURX BBoxLLX sub cvi 96 idiv 1 add string def 
+
+  0 1 FillRow length 1 sub { FillRow exch PatternChar put} for
+
+  BBoxLLX BBoxLLY 96 BBoxURY { exch dup 3 -1 roll moveto FillRow show } for pop 
+  grestore
+}bind def 
+
+/fillBBox
+{
+   closepath
+   PatternChar 0 eq {Color fillWithGray} {fillWithPattern} ifelse
+}bind def
+
+/fillPath
+{
+   closepath
+   pathbbox
+   /BBoxURY exch store
+   /BBoxURX exch store
+   /BBoxLLY exch store
+   /BBoxLLX exch store
+   PatternChar 0 eq {Color fillWithGray} {fillWithPattern} ifelse
+}bind def
+
+/DPT
+{
+   /pty exch def
+   /ptx exch def
+   ptx pty moveto ptx pty 1 0 0 arc fill
+}bind def
+
+/DL
+{
+   /pt2y exch def
+   /pt2x exch def
+   /pt1y exch def
+   /pt1x exch def
+   newpath pt1x pt1y moveto pt2x pt2y lineto stroke
+}bind def
+
+/DLS
+{
+   ptsPath stroke
+}bind def
+
+/DR
+{
+   /BBoxURY exch def
+   /BBoxURX exch def
+   /BBoxLLY exch def
+   /BBoxLLX exch def
+
+   newpath BBoxLLX BBoxLLY moveto
+   BBoxURX BBoxLLY BBoxURX BBoxURY BBoxLLX BBoxURY 3 {lineto} repeat
+   closepath stroke
+}bind def
+
+/FR
+{
+   /Color exch def
+   /PatternChar exch def
+   /BBoxURY exch def
+   /BBoxURX exch def
+   /BBoxLLY exch def
+   /BBoxLLX exch def
+
+   newpath BBoxLLX BBoxLLY moveto
+   BBoxURX BBoxLLY BBoxURX BBoxURY BBoxLLX BBoxURY 3 {lineto} repeat
+   closepath
+   PatternChar 0 eq {Color fillWithGray} {fillWithPattern} ifelse
+}bind def
+
+/DP
+{
+   ptsPath closepath stroke
+}bind def
+
+/FP
+{
+   /Color exch def
+   /PatternChar exch def
+   ptsPath
+   fillPath
+}bind def
+
+/DA
+{
+    gsave
+    newpath
+    arcPath
+    stroke
+    grestore
+}bind def
+
+/FA
+{
+    /Color exch def
+    /PatternChar exch def
+
+    gsave
+    newpath
+    arcPath
+    fillPath
+    grestore
+}bind def
+
+/SC
+{
+   setrgbcolor
+}bind def
+
+/SLW
+{
+   setlinewidth
+}bind def
+
+/SF
+{
+   /FontSize exch def
+   findfont FontSize scalefont setfont
+   /IsPatternFont 0 store
+}bind def
+
+/SD
+{
+   setdash
+}bind def
+
+
+%
+%
+%%EndProlog
+%
+%
+
+
+
+%%BeginSetup
+%%BeginFeature: *PageSize
+<< /PageSize [595 841] >> setpagedevice
+%%EndFeature
+%%EndSetup
+
+
+/rotateAngle 90 def
+/shiftRight 595 def
+/shiftDown 0 def
+/charSize 10 def
+ginit
+/IsPatternFont 0 store
+0 -1 8419 -1 8419 5953 0 5953 0 -1  setclip
+
+%%Page: 1 1
+360 359 8059 359 8059 5593 360 5593 360 359  setclip
+[] 0 SD
+/Times 99 SF
+newpath
+-4209 -5592 0 () 0 0 0 4209 5592 ctshow
+closepath
+newpath
+-4209 -360 0 () 0 0 0 4209 360 cbshow
+closepath
+/-adobe-helvetica-medium-r-normal--12-*-*-*-*-*-iso8859-* 99 SF
+/-adobe-helvetica-medium-r-normal--12-*-*-*-*-*-iso8859-* 99 SF
+0 -1 8419 -1 8419 5953 0 5953 0 -1  setclip
+5 SLW
+[] 0 SD
+/Helvetica 165 SF
+360 459 8059 459 8059 5493 360 5493 360 459  setclip
+5 SLW
+[] 0 SD
+508 557 7911 5395 DR
+650 589 7769 589 7769 5363 650 5363 650 589  setclip
+5 SLW
+[] 0 SD
+2111 2186 2111 2219 2 DLS
+2039 2186 2111 2186 2 DLS
+2111 2219 2147 2219 2 DLS
+1914 2252 1914 2286 2 DLS
+1842 2252 1914 2252 2 DLS
+1914 2286 1950 2286 2 DLS
+1735 2319 1735 2352 2 DLS
+1663 2319 1735 2319 2 DLS
+1735 2352 1753 2352 2 DLS
+1537 2385 1573 2385 2 DLS
+1412 2435 1448 2435 2 DLS
+1304 2451 1304 2484 2 DLS
+1286 2451 1304 2451 2 DLS
+1304 2484 1322 2484 2 DLS
+1161 2501 1197 2501 2 DLS
+1035 2551 1071 2551 2 DLS
+/PatternFont patternFont definefont pop
+7455 2767 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+7078 2750 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6702 2734 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6325 2717 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5949 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5626 2684 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5303 2667 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4980 2651 1.00 1.00 10 0 360 0 3 FA
+5070 2650 5070 2683 2 DLS
+5392 2667 5392 2700 2 DLS
+5715 2683 5715 2717 2 DLS
+6038 2700 6038 2733 2 DLS
+6414 2717 6414 2750 2 DLS
+6791 2733 6791 2766 2 DLS
+7167 2750 7167 2783 2 DLS
+7544 2766 7544 2799 2 DLS
+4980 2650 5070 2650 2 DLS
+5303 2667 5392 2667 2 DLS
+5625 2683 5715 2683 2 DLS
+5948 2700 6038 2700 2 DLS
+6325 2717 6414 2717 2 DLS
+6701 2733 6791 2733 2 DLS
+7078 2750 7167 2750 2 DLS
+7454 2766 7544 2766 2 DLS
+1035 3678 1089 3678 2 DLS
+1340 3479 1430 3479 2 DLS
+1645 3280 1735 3280 2 DLS
+1950 3081 2039 3081 2 DLS
+2326 2882 2326 2965 2 DLS
+2255 2882 2326 2882 2 DLS
+2326 2965 2362 2965 2 DLS
+2452 3048 2488 3048 2 DLS
+2846 2816 2846 2882 2 DLS
+2775 2816 2846 2816 2 DLS
+2846 2882 2882 2882 2 DLS
+2972 3015 3061 3015 2 DLS
+3420 2750 3420 2816 2 DLS
+3348 2750 3420 2750 2 DLS
+3420 2816 3456 2816 2 DLS
+3546 2949 3635 2949 2 DLS
+4012 2683 4012 2750 2 DLS
+3922 2683 4012 2683 2 DLS
+4012 2750 4030 2750 2 DLS
+4119 2882 4209 2882 2 DLS
+/SETFONT 0 def
+/SETANGLE 0 def
+ww 0 0.348214 put
+wp 0 (
+newpath
+2057 5197 M
+0 -5197 L
+-674 0 L
+0 3935 L
+-336 -322 -709 -279 -1161 -301 C
+0 667 L
+896 0 1161 358 1161 896 C
+674 0 L
+closepath
+) put
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 946 2551 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1072 2502 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1197 2452 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1323 2435 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1448 2386 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1574 2319 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1753 2253 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1950 2187 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+ww 1 0.607143 put
+wp 1 (
+newpath
+2939 4380 M
+165 -151 222 -373 222 -602 C
+0 -495 -416 -767 -1025 -767 C
+-609 0 -1025 236 -1025 788 C
+0 516 394 839 1025 839 C
+366 0 631 -86 803 -258 C
+3340 1412 M
+0 -516 -573 -853 -1204 -853 C
+-631 0 -1233 280 -1233 882 C
+0 659 480 1010 1233 1010 C
+509 0 753 -100 975 -365 C
+179 -194 229 -359 229 -674 C
+2129 -65 M
+1168 0 1899 474 1899 1477 C
+0 781 -329 989 -788 1298 C
+337 301 595 501 595 1111 C
+0 953 -753 1476 -1699 1476 C
+-975 0 -1699 -502 -1699 -1476 C
+0 -624 230 -846 545 -1111 C
+-423 -323 -738 -567 -738 -1298 C
+0 -1018 853 -1477 1885 -1477 C
+closepath
+) put
+ww 2 0.214286 put
+wp 2 (
+newpath
+387 5247 M
+760 0 L
+-194 -1584 L
+-394 0 L
+-172 1584 L
+closepath
+) put
+ww 3 0.571429 put
+wp 3 (
+newpath
+996 2652 M
+8 -1347 L
+136 -438 580 -696 1032 -696 C
+881 0 1132 653 1132 1398 C
+0 624 -329 1333 -1139 1333 C
+-438 0 -896 -258 -1033 -688 C
+323 5240 M
+673 0 L
+0 -1663 L
+352 279 717 451 1205 451 C
+1046 0 1641 -953 1641 -2021 C
+0 -1412 -738 -2050 -1735 -2050 C
+-372 0 -731 21 -1111 401 C
+0 -358 L
+-673 0 L
+0 5240 L
+closepath
+) put
+ww 4 0.607143 put
+wp 4 (
+newpath
+3527 552 M
+-337 -430 -817 -609 -1369 -609 C
+-1470 0 -1878 1297 -1878 2731 C
+0 1455 501 2616 1878 2616 C
+1369 0 1842 -1183 1842 -2616 C
+0 -1040 -129 -1663 -473 -2122 C
+3046 1025 M
+223 287 287 789 287 1649 C
+0 982 -222 1957 -1175 1957 C
+-1011 0 -1212 -925 -1212 -1957 C
+0 -1090 258 -2079 1212 -2079 C
+336 0 638 93 888 430 C
+closepath
+) put
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+wo 4 15 put
+wo 5 15 put
+wo 6 15 put
+wo 7 15 put
+wo 8 15 put
+wo 9 15 put
+wo 10 15 put
+/Use_Ratio 1 def
+[ 1 2 3 4 4 4 4 4 4 4 4] 4783 2767 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+ww 5 0.553571 put
+wp 5 (
+newpath
+308 5240 M
+674 0 L
+0 -1713 L
+315 337 652 473 1140 494 C
+1061 36 1462 -602 1462 -1613 C
+0 -2408 L
+-667 0 L
+0 2408 L
+0 638 -279 975 -917 975 C
+-437 0 -1018 -423 -1018 -803 C
+0 -2580 L
+-674 0 L
+0 5240 L
+closepath
+) put
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+wo 4 15 put
+/Use_Ratio 1 def
+[ 1 2 5 1 4] 1090 3546 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1090 3645 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 946 3678 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1430 3446 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1251 3479 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1735 3247 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1556 3281 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 2040 3049 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 1861 3082 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 2165 2883 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 2363 3049 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 2685 2816 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 2883 3015 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 3259 2750 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 3456 2949 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 3833 2684 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+/Use_Ratio 1 def
+[ 0] 4030 2883 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+wo 4 15 put
+/Use_Ratio 1 def
+[ 1 2 5 0 3] 1090 3612 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+wo 4 15 put
+/Use_Ratio 1 def
+[ 1 2 5 0 3] 1430 3413 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+wo 4 15 put
+/Use_Ratio 1 def
+[ 1 2 5 0 3] 1735 3214 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+wo 4 15 put
+/Use_Ratio 1 def
+[ 1 2 5 0 3] 2040 3015 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+wo 4 15 put
+/Use_Ratio 1 def
+[ 1 2 5 0 3] 2488 2949 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+wo 4 15 put
+/Use_Ratio 1 def
+[ 1 2 5 0 3] 3062 2883 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+wo 4 15 put
+/Use_Ratio 1 def
+[ 1 2 5 0 3] 3636 2816 (RIGHT) 0 cxshow
+/SETFONT 0 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+wo 4 15 put
+/Use_Ratio 1 def
+[ 1 2 5 0 3] 4210 2750 (RIGHT) 0 cxshow
+10 SLW
+1233 2700 1233 3529 2 DLS
+2147 2700 2147 2949 2 DLS
+2757 2915 2757 2949 2 DLS
+3223 2899 3223 2932 2 DLS
+3420 2882 3420 3065 2 DLS
+1717 2617 1717 3462 2 DLS
+1053 2634 1053 3512 2 DLS
+3994 2634 3994 2998 2 DLS
+1233 2700 4478 2700 2 DLS
+4173 2783 4209 2783 2 DLS
+2290 2252 7454 2252 2 DLS
+1717 2617 5482 2617 2 DLS
+7275 2882 7275 2932 2 DLS
+6881 2833 6881 3065 2 DLS
+4639 2634 4639 3661 2 DLS
+6504 2816 6504 3131 2 DLS
+5805 2783 5805 3264 2 DLS
+4657 2733 4657 3777 2 DLS
+6128 2799 6128 3164 2 DLS
+7257 2849 7257 2998 2 DLS
+3420 3065 6881 3065 2 DLS
+1394 3661 4639 3661 2 DLS
+2846 3131 6504 3131 2 DLS
+2004 3264 5805 3264 2 DLS
+820 3777 4657 3777 2 DLS
+2326 3164 6128 3164 2 DLS
+3994 2998 7257 2998 2 DLS
+2111 2286 2111 2319 2 DLS
+2111 2286 2147 2286 2 DLS
+2093 2319 2111 2319 2 DLS
+1914 2352 1914 2385 2 DLS
+1914 2352 1950 2352 2 DLS
+1896 2385 1914 2385 2 DLS
+1717 2418 1753 2418 2 DLS
+1537 2451 1573 2451 2 DLS
+1430 2468 1430 2501 2 DLS
+1430 2468 1448 2468 2 DLS
+1412 2501 1430 2501 2 DLS
+1286 2518 1322 2518 2 DLS
+1179 2534 1179 2567 2 DLS
+1179 2534 1197 2534 2 DLS
+1161 2567 1179 2567 2 DLS
+/PatternFont patternFont definefont pop
+3905 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3223 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2650 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2148 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3905 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3223 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2650 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2148 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3905 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3223 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2650 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2148 2700 1.00 1.00 10 0 360 0 3 FA
+2649 2700 2649 2915 2 DLS
+3223 2700 3223 2833 2 DLS
+3330 2833 3330 2866 2 DLS
+3904 2700 3904 2799 2 DLS
+3223 2833 3330 2833 2 DLS
+2649 2915 2757 2915 2 DLS
+3026 2915 3061 2915 2 DLS
+3205 2899 3223 2899 2 DLS
+3599 2849 3635 2849 2 DLS
+3797 2833 3797 2866 2 DLS
+3779 2833 3797 2833 2 DLS
+3797 2866 3832 2866 2 DLS
+3420 2882 3456 2882 2 DLS
+1053 2584 1053 2601 2 DLS
+1053 2584 1071 2584 2 DLS
+802 2601 1053 2601 2 DLS
+/PatternFont patternFont definefont pop
+3994 2899 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3994 2816 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3994 2899 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3994 2816 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3994 2899 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3994 2816 1.00 1.00 10 0 360 0 3 FA
+1053 2634 3994 2634 2 DLS
+3994 2816 4030 2816 2 DLS
+3976 2899 3994 2899 2 DLS
+731 2601 749 2601 2 DLS
+/PatternFont patternFont definefont pop
+1233 3529 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1628 3330 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1233 3330 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1233 3529 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1628 3330 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1233 3330 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1628 3330 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1233 3529 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1233 3330 1.00 1.00 10 0 360 0 3 FA
+1322 3529 1322 3562 2 DLS
+1627 3330 1627 3363 2 DLS
+1842 3131 1842 3330 2 DLS
+1932 3131 1932 3164 2 DLS
+2237 2949 2237 2965 2 DLS
+2147 2949 2237 2949 2 DLS
+1842 3131 1932 3131 2 DLS
+1233 3330 1842 3330 2 DLS
+1215 3529 1322 3529 2 DLS
+1179 3628 1251 3628 2 DLS
+1179 3694 1251 3694 2 DLS
+1519 3429 1555 3429 2 DLS
+1519 3496 1555 3496 2 DLS
+1824 3230 1860 3230 2 DLS
+1824 3297 1860 3297 2 DLS
+2129 3031 2165 3031 2 DLS
+2129 3098 2165 3098 2 DLS
+2452 2982 2488 2982 2 DLS
+2649 2965 2649 3015 2 DLS
+2631 2965 2649 2965 2 DLS
+2649 3015 2685 3015 2 DLS
+2631 3081 2685 3081 2 DLS
+3223 2932 3259 2932 2 DLS
+3223 2998 3223 3048 2 DLS
+3223 2998 3259 2998 2 DLS
+3205 3048 3223 3048 2 DLS
+3797 2932 3797 2982 2 DLS
+3797 2932 3832 2932 2 DLS
+3779 2982 3797 2982 2 DLS
+/PatternFont patternFont definefont pop
+3618 3065 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3421 2966 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3618 3065 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3421 2966 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3618 3065 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3421 2966 1.00 1.00 10 0 360 0 3 FA
+3617 3015 3617 3065 2 DLS
+3402 2965 3420 2965 2 DLS
+3617 3015 3635 3015 2 DLS
+/PatternFont patternFont definefont pop
+1412 3662 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1412 3513 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1412 3662 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1412 3513 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1412 3662 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1412 3513 1.00 1.00 10 0 360 0 3 FA
+1412 3429 1412 3661 2 DLS
+1412 3429 1430 3429 2 DLS
+1412 3512 1430 3512 2 DLS
+/PatternFont patternFont definefont pop
+3044 3131 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2847 3049 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3044 3131 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2847 3049 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+3044 3131 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2847 3049 1.00 1.00 10 0 360 0 3 FA
+2846 2949 2846 3131 2 DLS
+3044 3081 3044 3131 2 DLS
+2846 2949 2882 2949 2 DLS
+2828 3048 2846 3048 2 DLS
+3044 3081 3061 3081 2 DLS
+/PatternFont patternFont definefont pop
+2022 3264 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2022 3115 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2022 3264 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2022 3115 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2022 3264 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2022 3115 1.00 1.00 10 0 360 0 3 FA
+2022 3031 2022 3264 2 DLS
+2022 3031 2039 3031 2 DLS
+2022 3114 2039 3114 2 DLS
+/PatternFont patternFont definefont pop
+1717 3314 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1717 3231 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1717 3314 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1717 3231 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1717 3314 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1717 3231 1.00 1.00 10 0 360 0 3 FA
+1717 3230 1735 3230 2 DLS
+1717 3313 1735 3313 2 DLS
+1699 3462 1717 3462 2 DLS
+/PatternFont patternFont definefont pop
+1054 3778 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1054 3712 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1054 3778 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1054 3712 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1054 3778 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+1054 3712 1.00 1.00 10 0 360 0 3 FA
+820 3628 820 3777 2 DLS
+1053 3628 1053 3777 2 DLS
+802 3628 820 3628 2 DLS
+1053 3628 1089 3628 2 DLS
+1053 3711 1089 3711 2 DLS
+/PatternFont patternFont definefont pop
+2470 3165 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2327 3065 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2470 3165 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2327 3065 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2470 3165 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+2327 3065 1.00 1.00 10 0 360 0 3 FA
+2326 2998 2326 3164 2 DLS
+2470 3114 2470 3164 2 DLS
+2326 2998 2362 2998 2 DLS
+2308 3065 2326 3065 2 DLS
+2470 3114 2488 3114 2 DLS
+1053 3512 1089 3512 2 DLS
+731 3628 749 3628 2 DLS
+/PatternFont patternFont definefont pop
+7276 2883 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+7276 2883 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+7276 2883 1.00 1.00 10 0 360 0 3 FA
+7239 2882 7293 2882 2 DLS
+7436 2866 7472 2866 2 DLS
+/PatternFont patternFont definefont pop
+6899 2866 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6899 2866 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6899 2866 1.00 1.00 10 0 360 0 3 FA
+6899 2866 6899 2915 2 DLS
+6863 2866 6916 2866 2 DLS
+6899 2915 7096 2915 2 DLS
+7060 2849 7096 2849 2 DLS
+/PatternFont patternFont definefont pop
+6522 2850 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6522 2850 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6522 2850 1.00 1.00 10 0 360 0 3 FA
+6522 2849 6522 2899 2 DLS
+6486 2849 6540 2849 2 DLS
+6522 2899 6719 2899 2 DLS
+6683 2833 6719 2833 2 DLS
+/PatternFont patternFont definefont pop
+6146 2833 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6146 2833 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6146 2833 1.00 1.00 10 0 360 0 3 FA
+6145 2833 6145 2882 2 DLS
+6110 2833 6163 2833 2 DLS
+6145 2882 6343 2882 2 DLS
+6307 2816 6343 2816 2 DLS
+/PatternFont patternFont definefont pop
+5823 2816 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5823 2816 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5823 2816 1.00 1.00 10 0 360 0 3 FA
+5823 2816 5823 2866 2 DLS
+5787 2816 5841 2816 2 DLS
+5823 2866 5966 2866 2 DLS
+5930 2799 5966 2799 2 DLS
+/PatternFont patternFont definefont pop
+5483 2800 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5483 2800 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5483 2800 1.00 1.00 10 0 360 0 3 FA
+5482 2799 5482 2849 2 DLS
+5464 2799 5518 2799 2 DLS
+5482 2849 5643 2849 2 DLS
+5608 2783 5643 2783 2 DLS
+/PatternFont patternFont definefont pop
+5160 2783 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5160 2783 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5160 2783 1.00 1.00 10 0 360 0 3 FA
+5159 2783 5159 2833 2 DLS
+5141 2783 5195 2783 2 DLS
+5159 2833 5321 2833 2 DLS
+5285 2766 5321 2766 2 DLS
+/PatternFont patternFont definefont pop
+4855 2767 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4855 2767 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4855 2767 1.00 1.00 10 0 360 0 3 FA
+4854 2766 4854 2816 2 DLS
+4837 2766 4872 2766 2 DLS
+4854 2816 4998 2816 2 DLS
+4962 2750 4998 2750 2 DLS
+4478 2700 4478 2733 2 DLS
+4370 2766 4370 2799 2 DLS
+4352 2766 4370 2766 2 DLS
+4370 2799 4406 2799 2 DLS
+4370 2866 4370 2915 2 DLS
+4370 2866 4406 2866 2 DLS
+4352 2915 4370 2915 2 DLS
+4550 2833 4559 2833 2 DLS
+7616 2899 7687 2899 2 DLS
+/PatternFont patternFont definefont pop
+7455 2734 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6325 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5949 2684 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5626 2667 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5303 2651 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4980 2601 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4980 2253 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+7455 2734 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6325 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5949 2684 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5626 2667 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5303 2651 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4980 2601 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4980 2253 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+7455 2734 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+6325 2700 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5949 2684 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5626 2667 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+5303 2651 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4980 2601 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4980 2253 1.00 1.00 10 0 360 0 3 FA
+4980 2252 4980 2650 2 DLS
+5303 2601 5303 2667 2 DLS
+5625 2650 5625 2683 2 DLS
+5948 2667 5948 2700 2 DLS
+6325 2683 6325 2717 2 DLS
+6701 2700 6701 2733 2 DLS
+7078 2733 7078 2750 2 DLS
+7454 2252 7454 2766 2 DLS
+4980 2601 5303 2601 2 DLS
+5303 2650 5625 2650 2 DLS
+5625 2667 5948 2667 2 DLS
+5948 2683 6325 2683 2 DLS
+6325 2700 6701 2700 2 DLS
+7078 2733 7454 2733 2 DLS
+6881 2833 6916 2833 2 DLS
+5159 2634 5159 2750 2 DLS
+4639 2634 5159 2634 2 DLS
+5159 2750 5195 2750 2 DLS
+6504 2816 6540 2816 2 DLS
+5805 2783 5841 2783 2 DLS
+5482 2617 5482 2766 2 DLS
+5482 2766 5518 2766 2 DLS
+4657 2733 4872 2733 2 DLS
+6128 2799 6163 2799 2 DLS
+7257 2849 7293 2849 2 DLS
+7275 2932 7472 2932 2 DLS
+/PatternFont patternFont definefont pop
+4192 2999 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4192 2999 1.00 1.00 10 0 360 0 3 FA
+/PatternFont patternFont definefont pop
+4192 2999 1.00 1.00 10 0 360 0 3 FA
+4191 2949 4191 2998 2 DLS
+4191 2949 4209 2949 2 DLS
+5 SLW
+677 3625 677 3633 701 3633 713 3629 701 3625 677 3625 6 DLS
+677 2597 677 2605 701 2605 713 2601 701 2597 677 2597 6 DLS
+7706 2895 7706 2904 7730 2904 7742 2899 7730 2895 7706 2895 6 DLS
+7491 2816 7598 2850 7598 2949 7491 2982 4 DP
+7114 2800 7222 2833 7222 2933 7114 2966 4 DP
+6738 2783 6845 2816 6845 2916 6738 2949 4 DP
+6361 2767 6469 2800 6469 2899 6361 2933 4 DP
+5985 2750 6092 2783 6092 2883 5985 2916 4 DP
+5662 2734 5769 2767 5769 2866 5662 2899 4 DP
+5339 2717 5447 2750 5447 2850 5339 2883 4 DP
+5016 2700 5124 2734 5124 2833 5016 2866 4 DP
+4801 2766 4819 2766 2 DLS
+4917 2750 4944 2750 2 DLS
+4890 2733 4904 2733 2 DLS
+4890 2766 4904 2766 2 DLS
+4900 2751 4907 2751 2 DLS
+4905 2756 4902 2743 2 DLS
+4899 2744 1.17 1.00 3 180 360 DA
+4909 2756 1.00 1.00 3 0 180 DA
+4904 2750 1.08 1.00 12 0 360 DA
+4904 2733 4904 2737 2 DLS
+4904 2762 4904 2766 2 DLS
+5240 2766 5267 2766 2 DLS
+5213 2750 5227 2750 2 DLS
+5213 2783 5227 2783 2 DLS
+5223 2768 5230 2768 2 DLS
+5228 2772 5225 2760 2 DLS
+5222 2760 1.00 1.17 3 180 360 DA
+5232 2773 1.00 1.00 3 0 180 DA
+5227 2766 1.04 1.00 12 0 360 DA
+5227 2750 5227 2754 2 DLS
+5227 2779 5227 2783 2 DLS
+5563 2783 5590 2783 2 DLS
+5536 2766 5549 2766 2 DLS
+5536 2799 5549 2799 2 DLS
+5546 2784 5553 2784 2 DLS
+5551 2789 5548 2777 2 DLS
+5544 2777 1.17 1.00 3 180 360 DA
+5554 2789 1.00 1.00 3 0 180 DA
+5549 2783 1.08 1.00 12 0 360 DA
+5549 2766 5549 2770 2 DLS
+5549 2795 5549 2799 2 DLS
+5885 2799 5912 2799 2 DLS
+5859 2783 5872 2783 2 DLS
+5859 2816 5872 2816 2 DLS
+5869 2801 5875 2801 2 DLS
+5874 2806 5870 2793 2 DLS
+5867 2794 1.17 1.00 3 180 360 DA
+5877 2806 1.17 1.00 3 0 180 DA
+5872 2799 1.08 1.00 12 0 360 DA
+5872 2783 5872 2787 2 DLS
+5872 2812 5872 2816 2 DLS
+6181 2799 6179 2799 2 DLS
+6181 2833 6179 2833 2 DLS
+6171 2816 1.00 2.71 10 270 450 DA
+6181 2816 1.00 2.71 10 270 450 DA
+6221 2845 1.09 1.00 57 270 330 DA
+6221 2787 1.09 1.00 57 30 90 DA
+6181 2845 6221 2845 2 DLS
+6221 2787 6181 2787 2 DLS
+6558 2816 6556 2816 2 DLS
+6558 2849 6556 2849 2 DLS
+6548 2833 1.00 2.90 10 270 450 DA
+6558 2833 1.00 2.76 10 270 450 DA
+6598 2862 1.07 1.00 58 270 330 DA
+6598 2804 1.08 1.00 57 30 90 DA
+6558 2861 6597 2861 2 DLS
+6597 2804 6558 2804 2 DLS
+6934 2833 6932 2833 2 DLS
+6934 2866 6932 2866 2 DLS
+6924 2849 1.00 2.71 10 270 450 DA
+6934 2849 1.00 2.71 10 270 450 DA
+6974 2878 1.09 1.00 57 270 330 DA
+6974 2820 1.09 1.00 57 30 90 DA
+6934 2878 6974 2878 2 DLS
+6974 2820 6934 2820 2 DLS
+7311 2849 7309 2849 2 DLS
+7311 2882 7309 2882 2 DLS
+7301 2866 1.00 2.90 10 270 450 DA
+7311 2866 1.00 2.76 10 270 450 DA
+7351 2895 1.07 1.00 58 270 330 DA
+7351 2837 1.08 1.00 57 30 90 DA
+7311 2895 7350 2895 2 DLS
+7350 2837 7311 2837 2 DLS
+1995 2186 2022 2186 2 DLS
+1978 2188 1985 2188 2 DLS
+1983 2192 1980 2180 2 DLS
+1976 2180 1.00 1.00 3 180 360 DA
+1986 2193 1.17 1.00 3 0 180 DA
+1981 2186 1.08 1.00 12 0 360 DA
+1797 2252 1824 2252 2 DLS
+1781 2254 1787 2254 2 DLS
+1786 2259 1782 2246 2 DLS
+1779 2247 1.17 1.00 3 180 360 DA
+1789 2259 1.17 1.00 3 0 180 DA
+1784 2253 1.12 1.00 12 0 360 DA
+1618 2319 1645 2319 2 DLS
+1601 2320 1608 2320 2 DLS
+1606 2325 1603 2313 2 DLS
+1600 2313 1.17 1.00 3 180 360 DA
+1610 2325 1.00 1.00 3 0 180 DA
+1605 2319 1.08 1.00 12 0 360 DA
+1493 2385 1519 2385 2 DLS
+1476 2387 1482 2387 2 DLS
+1481 2391 1478 2379 2 DLS
+1474 2379 1.17 1.00 3 180 360 DA
+1484 2392 1.17 1.00 3 0 180 DA
+1479 2385 1.08 1.00 12 0 360 DA
+1367 2435 1394 2435 2 DLS
+1350 2436 1357 2436 2 DLS
+1355 2441 1352 2429 2 DLS
+1349 2429 1.00 1.00 3 180 360 DA
+1359 2441 1.00 1.00 3 0 180 DA
+1354 2435 1.08 1.00 12 0 360 DA
+1242 2451 1268 2451 2 DLS
+1225 2453 1231 2453 2 DLS
+1230 2458 1226 2445 2 DLS
+1223 2445 1.00 1.00 3 180 360 DA
+1233 2458 1.17 1.00 3 0 180 DA
+1228 2451 1.08 1.00 12 0 360 DA
+1116 2501 1143 2501 2 DLS
+1099 2503 1106 2503 2 DLS
+1104 2507 1101 2495 2 DLS
+1098 2495 1.00 1.00 3 180 360 DA
+1108 2508 1.00 1.00 3 0 180 DA
+1103 2501 1.08 1.00 12 0 360 DA
+991 2551 1017 2551 2 DLS
+974 2552 980 2552 2 DLS
+979 2557 975 2545 2 DLS
+972 2545 1.17 1.00 3 180 360 DA
+982 2557 1.00 1.00 3 0 180 DA
+977 2551 1.08 1.00 12 0 360 DA
+766 2601 784 2601 2 DLS
+1116 2567 1143 2567 2 DLS
+1089 2551 1103 2551 2 DLS
+1089 2584 1103 2584 2 DLS
+1099 2569 1106 2569 2 DLS
+1104 2574 1101 2561 2 DLS
+1098 2562 1.00 1.00 3 180 360 DA
+1108 2574 1.00 1.00 3 0 180 DA
+1103 2567 1.08 1.00 12 0 360 DA
+1103 2551 1103 2555 2 DLS
+1103 2580 1103 2584 2 DLS
+1242 2518 1268 2518 2 DLS
+1215 2501 1228 2501 2 DLS
+1215 2534 1228 2534 2 DLS
+1225 2519 1231 2519 2 DLS
+1230 2524 1226 2511 2 DLS
+1223 2512 1.17 1.00 3 180 360 DA
+1233 2524 1.17 1.00 3 0 180 DA
+1228 2518 1.08 1.00 12 0 360 DA
+1228 2501 1228 2505 2 DLS
+1228 2530 1228 2534 2 DLS
+1367 2501 1394 2501 2 DLS
+1340 2484 1354 2484 2 DLS
+1340 2518 1354 2518 2 DLS
+1350 2503 1357 2503 2 DLS
+1355 2507 1352 2495 2 DLS
+1349 2495 1.00 1.00 3 180 360 DA
+1359 2508 1.17 1.00 3 0 180 DA
+1354 2501 1.08 1.00 12 0 360 DA
+1354 2484 1354 2489 2 DLS
+1354 2513 1354 2518 2 DLS
+1493 2451 1519 2451 2 DLS
+1466 2435 1479 2435 2 DLS
+1466 2468 1479 2468 2 DLS
+1476 2453 1482 2453 2 DLS
+1481 2458 1478 2445 2 DLS
+1474 2445 1.00 1.00 3 180 360 DA
+1484 2458 1.17 1.00 3 0 180 DA
+1479 2451 1.08 1.00 12 0 360 DA
+1479 2435 1479 2439 2 DLS
+1479 2464 1479 2468 2 DLS
+1627 2426 1641 2419 1627 2412 3 DLS
+1647 2426 1661 2419 1647 2412 3 DLS
+1645 2419 1.06 1.00 25 0 360 DA
+1592 2369 1699 2468 DR
+1806 2393 1820 2386 1806 2379 3 DLS
+1827 2393 1840 2386 1827 2379 3 DLS
+1825 2385 1.10 1.00 24 0 360 DA
+1771 2336 1879 2435 DR
+2004 2326 2017 2319 2004 2312 3 DLS
+2024 2326 2037 2319 2024 2312 3 DLS
+2022 2319 1.08 1.00 25 0 360 DA
+1968 2270 2076 2369 DR
+2201 2260 2214 2253 2201 2246 3 DLS
+2221 2260 2234 2253 2221 2246 3 DLS
+2219 2253 1.08 1.00 25 0 360 DA
+2165 2203 2273 2303 DR
+4425 2750 4532 2783 4532 2883 4425 2916 4 DP
+4075 2882 4101 2882 2 DLS
+4058 2884 4064 2884 2 DLS
+4063 2888 4059 2876 2 DLS
+4056 2876 1.00 1.00 3 180 360 DA
+4066 2889 1.17 1.00 3 0 180 DA
+4061 2882 1.08 1.00 12 0 360 DA
+4276 2923 4263 2916 4276 2909 3 DLS
+4296 2923 4283 2916 4296 2909 3 DLS
+4281 2916 1.08 1.00 25 0 360 DA
+4227 2866 4335 2966 DR
+3877 2683 3904 2683 2 DLS
+3861 2685 3867 2685 2 DLS
+3865 2690 3862 2677 2 DLS
+3859 2678 1.17 1.00 3 180 360 DA
+3869 2690 1.17 1.00 3 0 180 DA
+3864 2683 1.08 1.00 12 0 360 DA
+4097 2790 4083 2783 4097 2776 3 DLS
+4117 2790 4104 2783 4117 2776 3 DLS
+4102 2783 1.08 1.00 25 0 360 DA
+4048 2734 4156 2833 DR
+4227 2750 4225 2750 2 DLS
+4227 2783 4225 2783 2 DLS
+4217 2767 1.00 2.90 10 270 450 DA
+4227 2767 1.00 2.76 10 270 450 DA
+4267 2795 1.08 1.00 57 270 330 DA
+4267 2738 1.07 1.00 58 30 90 DA
+4227 2795 4267 2795 2 DLS
+4267 2737 4227 2737 2 DLS
+3851 2816 3958 2850 3958 2949 3851 2982 4 DP
+3501 2949 3528 2949 2 DLS
+3484 2950 3491 2950 2 DLS
+3489 2955 3486 2942 2 DLS
+3482 2943 1.17 1.00 3 180 360 DA
+3492 2955 1.17 1.00 3 0 180 DA
+3487 2949 1.08 1.00 12 0 360 DA
+3702 2989 3689 2982 3702 2975 3 DLS
+3723 2989 3709 2982 3723 2975 3 DLS
+3707 2982 1.06 1.00 25 0 360 DA
+3654 2933 3761 3032 DR
+3304 2750 3330 2750 2 DLS
+3287 2751 3293 2751 2 DLS
+3292 2756 3288 2743 2 DLS
+3285 2744 1.17 1.00 3 180 360 DA
+3295 2756 1.00 1.00 3 0 180 DA
+3290 2750 1.08 1.00 12 0 360 DA
+3523 2857 3510 2850 3523 2843 3 DLS
+3543 2857 3530 2850 3543 2843 3 DLS
+3528 2849 1.10 1.00 24 0 360 DA
+3474 2800 3582 2899 DR
+3653 2816 3651 2816 2 DLS
+3653 2849 3651 2849 2 DLS
+3643 2833 1.00 2.76 10 270 450 DA
+3653 2833 1.00 2.76 10 270 450 DA
+3693 2862 1.08 1.00 58 270 330 DA
+3693 2804 1.09 1.00 57 30 90 DA
+3653 2861 3693 2861 2 DLS
+3693 2804 3653 2804 2 DLS
+3277 2883 3385 2916 3385 3015 3277 3049 4 DP
+2927 3015 2954 3015 2 DLS
+2910 3016 2917 3016 2 DLS
+2915 3021 2912 3009 2 DLS
+2909 3009 1.00 1.00 3 180 360 DA
+2919 3021 1.00 1.17 3 0 180 DA
+2914 3015 1.08 1.00 12 0 360 DA
+3129 3056 3115 3049 3129 3042 3 DLS
+3149 3056 3135 3049 3149 3042 3 DLS
+3134 3048 1.10 1.00 24 0 360 DA
+3080 2999 3187 3098 DR
+2730 2816 2757 2816 2 DLS
+2713 2818 2720 2818 2 DLS
+2718 2822 2715 2810 2 DLS
+2711 2810 1.17 1.00 3 180 360 DA
+2721 2823 1.17 1.00 3 0 180 DA
+2716 2816 1.08 1.00 12 0 360 DA
+2949 2923 2936 2916 2949 2909 3 DLS
+2970 2923 2956 2916 2970 2909 3 DLS
+2954 2916 1.06 1.00 25 0 360 DA
+2901 2866 3008 2966 DR
+3079 2882 3078 2882 2 DLS
+3079 2915 3078 2915 2 DLS
+3069 2899 1.00 2.71 10 270 450 DA
+3080 2899 1.00 2.85 10 270 450 DA
+3119 2928 1.09 1.00 57 270 330 DA
+3119 2870 1.09 1.00 57 30 90 DA
+3079 2928 3119 2928 2 DLS
+3119 2870 3079 2870 2 DLS
+2703 2966 2811 2999 2811 3098 2703 3131 4 DP
+2407 3048 2434 3048 2 DLS
+2390 3050 2397 3050 2 DLS
+2395 3054 2392 3042 2 DLS
+2389 3042 1.00 1.00 3 180 360 DA
+2399 3055 1.00 1.00 3 0 180 DA
+2394 3048 1.08 1.00 12 0 360 DA
+2555 3089 2542 3082 2555 3075 3 DLS
+2575 3089 2562 3082 2575 3075 3 DLS
+2560 3082 1.08 1.00 25 0 360 DA
+2506 3032 2614 3131 DR
+2210 2882 2237 2882 2 DLS
+2193 2884 2200 2884 2 DLS
+2198 2888 2195 2876 2 DLS
+2192 2876 1.00 1.17 3 180 360 DA
+2202 2889 1.00 1.00 3 0 180 DA
+2196 2882 1.08 1.00 12 0 360 DA
+2407 2982 2434 2982 2 DLS
+2380 2965 2394 2965 2 DLS
+2380 2998 2394 2998 2 DLS
+2390 2983 2397 2983 2 DLS
+2395 2988 2392 2976 2 DLS
+2389 2976 1.00 1.00 3 180 360 DA
+2399 2988 1.00 1.17 3 0 180 DA
+2394 2982 1.08 1.00 12 0 360 DA
+2394 2965 2394 2969 2 DLS
+2394 2994 2394 2998 2 DLS
+2506 2949 2504 2949 2 DLS
+2506 2982 2504 2982 2 DLS
+2495 2965 1.00 2.71 10 270 450 DA
+2506 2965 1.00 2.71 10 270 450 DA
+2545 2994 1.09 1.00 57 270 330 DA
+2545 2936 1.09 1.00 57 30 90 DA
+2506 2994 2545 2994 2 DLS
+2545 2936 2506 2936 2 DLS
+2183 2982 2291 3015 2291 3115 2183 3148 4 DP
+1905 3081 1932 3081 2 DLS
+1888 3083 1895 3083 2 DLS
+1893 3087 1890 3075 2 DLS
+1887 3075 1.00 1.17 3 180 360 DA
+1897 3088 1.00 1.00 3 0 180 DA
+1892 3081 1.04 1.00 12 0 360 DA
+2084 3098 2111 3098 2 DLS
+2057 3081 2071 3081 2 DLS
+2057 3114 2071 3114 2 DLS
+2068 3099 2074 3099 2 DLS
+2072 3104 2069 3092 2 DLS
+2066 3092 1.17 1.00 3 180 360 DA
+2076 3104 1.00 1.00 3 0 180 DA
+2071 3098 1.08 1.00 12 0 360 DA
+2071 3081 2071 3085 2 DLS
+2071 3110 2071 3114 2 DLS
+2084 3031 2111 3031 2 DLS
+2057 3015 2071 3015 2 DLS
+2057 3048 2071 3048 2 DLS
+2068 3033 2074 3033 2 DLS
+2072 3038 2069 3025 2 DLS
+2066 3026 1.17 1.00 3 180 360 DA
+2076 3038 1.17 1.00 3 0 180 DA
+2071 3032 1.12 1.00 12 0 360 DA
+2071 3015 2071 3019 2 DLS
+2071 3044 2071 3048 2 DLS
+1879 3181 1986 3214 1986 3314 1879 3347 4 DP
+1600 3280 1627 3280 2 DLS
+1583 3282 1590 3282 2 DLS
+1588 3286 1585 3274 2 DLS
+1582 3274 1.17 1.00 3 180 360 DA
+1592 3287 1.17 1.00 3 0 180 DA
+1587 3280 1.08 1.00 12 0 360 DA
+1779 3297 1806 3297 2 DLS
+1753 3280 1766 3280 2 DLS
+1753 3313 1766 3313 2 DLS
+1763 3298 1769 3298 2 DLS
+1768 3303 1764 3290 2 DLS
+1761 3291 1.17 1.00 3 180 360 DA
+1771 3303 1.00 1.00 3 0 180 DA
+1766 3297 1.08 1.00 12 0 360 DA
+1766 3280 1766 3284 2 DLS
+1766 3309 1766 3313 2 DLS
+1779 3230 1806 3230 2 DLS
+1753 3214 1766 3214 2 DLS
+1753 3247 1766 3247 2 DLS
+1763 3232 1769 3232 2 DLS
+1768 3237 1764 3224 2 DLS
+1761 3225 1.17 1.00 3 180 360 DA
+1771 3237 1.17 1.00 3 0 180 DA
+1766 3230 1.08 1.00 12 0 360 DA
+1766 3214 1766 3218 2 DLS
+1766 3243 1766 3247 2 DLS
+1574 3380 1681 3413 1681 3513 1574 3546 4 DP
+1295 3479 1322 3479 2 DLS
+1279 3481 1285 3481 2 DLS
+1284 3485 1280 3473 2 DLS
+1277 3473 1.17 1.00 3 180 360 DA
+1287 3486 1.17 1.00 3 0 180 DA
+1282 3479 1.08 1.00 12 0 360 DA
+1475 3496 1502 3496 2 DLS
+1448 3479 1461 3479 2 DLS
+1448 3512 1461 3512 2 DLS
+1458 3497 1465 3497 2 DLS
+1463 3502 1460 3489 2 DLS
+1456 3490 1.17 1.00 3 180 360 DA
+1466 3502 1.17 1.00 3 0 180 DA
+1461 3496 1.12 1.00 12 0 360 DA
+1461 3479 1461 3483 2 DLS
+1461 3508 1461 3512 2 DLS
+1475 3429 1502 3429 2 DLS
+1448 3413 1461 3413 2 DLS
+1448 3446 1461 3446 2 DLS
+1458 3431 1465 3431 2 DLS
+1463 3435 1460 3423 2 DLS
+1456 3423 1.00 1.00 3 180 360 DA
+1466 3436 1.17 1.00 3 0 180 DA
+1461 3429 1.08 1.00 12 0 360 DA
+1461 3413 1461 3417 2 DLS
+1461 3442 1461 3446 2 DLS
+1269 3579 1377 3612 1377 3712 1269 3745 4 DP
+991 3678 1017 3678 2 DLS
+974 3679 980 3679 2 DLS
+979 3684 975 3672 2 DLS
+972 3672 1.17 1.00 3 180 360 DA
+982 3684 1.00 1.00 3 0 180 DA
+977 3678 1.08 1.00 12 0 360 DA
+1134 3694 1161 3694 2 DLS
+1107 3678 1121 3678 2 DLS
+1107 3711 1121 3711 2 DLS
+1117 3696 1124 3696 2 DLS
+1122 3701 1119 3688 2 DLS
+1116 3689 1.00 1.00 3 180 360 DA
+1126 3701 1.00 1.00 3 0 180 DA
+1121 3695 1.12 1.00 12 0 360 DA
+1121 3678 1121 3682 2 DLS
+1121 3707 1121 3711 2 DLS
+1134 3628 1161 3628 2 DLS
+1107 3612 1121 3612 2 DLS
+1107 3645 1121 3645 2 DLS
+1117 3630 1124 3630 2 DLS
+1122 3634 1119 3622 2 DLS
+1116 3622 1.00 1.17 3 180 360 DA
+1126 3635 1.00 1.00 3 0 180 DA
+1121 3628 1.08 1.00 12 0 360 DA
+1121 3612 1121 3616 2 DLS
+1121 3641 1121 3645 2 DLS
+766 3628 784 3628 2 DLS
+1159 3529 1.09 1.00 29 270 450 DA
+1107 3500 1107 3558 2 DLS
+1107 3558 1159 3558 2 DLS
+1159 3500 1107 3500 2 DLS
+713 3628 731 3628 2 DLS
+713 2601 731 2601 2 DLS
+7687 2899 7705 2899 2 DLS
+7544 2833 7544 2799 2 DLS
+7598 2899 7616 2899 2 DLS
+7472 2866 7490 2866 2 DLS
+7472 2932 7490 2932 2 DLS
+7167 2816 7167 2783 2 DLS
+7221 2882 7239 2882 2 DLS
+7096 2849 7114 2849 2 DLS
+7096 2915 7114 2915 2 DLS
+6791 2799 6791 2766 2 DLS
+6845 2866 6863 2866 2 DLS
+6719 2833 6737 2833 2 DLS
+6719 2899 6737 2899 2 DLS
+6414 2783 6414 2750 2 DLS
+6468 2849 6486 2849 2 DLS
+6343 2816 6361 2816 2 DLS
+6343 2882 6361 2882 2 DLS
+6038 2766 6038 2733 2 DLS
+6092 2833 6110 2833 2 DLS
+5966 2799 5984 2799 2 DLS
+5966 2866 5984 2866 2 DLS
+5715 2750 5715 2717 2 DLS
+5769 2816 5787 2816 2 DLS
+5643 2783 5661 2783 2 DLS
+5643 2849 5661 2849 2 DLS
+5392 2733 5392 2700 2 DLS
+5446 2799 5464 2799 2 DLS
+5321 2766 5339 2766 2 DLS
+5321 2833 5339 2833 2 DLS
+5070 2717 5070 2683 2 DLS
+5123 2783 5141 2783 2 DLS
+4998 2750 5016 2750 2 DLS
+4998 2816 5016 2816 2 DLS
+4819 2766 4837 2766 2 DLS
+4783 2766 4801 2766 2 DLS
+4944 2750 4962 2750 2 DLS
+4872 2733 4890 2733 2 DLS
+4872 2766 4890 2766 2 DLS
+5267 2766 5285 2766 2 DLS
+5195 2750 5213 2750 2 DLS
+5195 2783 5213 2783 2 DLS
+5590 2783 5608 2783 2 DLS
+5518 2766 5536 2766 2 DLS
+5518 2799 5536 2799 2 DLS
+5912 2799 5930 2799 2 DLS
+5841 2783 5859 2783 2 DLS
+5841 2816 5859 2816 2 DLS
+6275 2816 6307 2816 2 DLS
+6163 2799 6181 2799 2 DLS
+6163 2833 6181 2833 2 DLS
+6651 2833 6683 2833 2 DLS
+6540 2816 6558 2816 2 DLS
+6540 2849 6558 2849 2 DLS
+7028 2849 7060 2849 2 DLS
+6916 2833 6934 2833 2 DLS
+6916 2866 6934 2866 2 DLS
+7404 2866 7436 2866 2 DLS
+7293 2849 7311 2849 2 DLS
+7293 2882 7311 2882 2 DLS
+2022 2186 2039 2186 2 DLS
+1950 2186 1968 2186 2 DLS
+1824 2252 1842 2252 2 DLS
+1753 2252 1771 2252 2 DLS
+1645 2319 1663 2319 2 DLS
+1573 2319 1591 2319 2 DLS
+1519 2385 1537 2385 2 DLS
+1448 2385 1466 2385 2 DLS
+1394 2435 1412 2435 2 DLS
+1322 2435 1340 2435 2 DLS
+1268 2451 1286 2451 2 DLS
+1197 2451 1215 2451 2 DLS
+1143 2501 1161 2501 2 DLS
+1071 2501 1089 2501 2 DLS
+1017 2551 1035 2551 2 DLS
+946 2551 964 2551 2 DLS
+784 2601 802 2601 2 DLS
+749 2601 766 2601 2 DLS
+1143 2567 1161 2567 2 DLS
+1071 2551 1089 2551 2 DLS
+1071 2584 1089 2584 2 DLS
+1268 2518 1286 2518 2 DLS
+1197 2501 1215 2501 2 DLS
+1197 2534 1215 2534 2 DLS
+1394 2501 1412 2501 2 DLS
+1322 2484 1340 2484 2 DLS
+1322 2518 1340 2518 2 DLS
+1519 2451 1537 2451 2 DLS
+1448 2435 1466 2435 2 DLS
+1448 2468 1466 2468 2 DLS
+1699 2418 1717 2418 2 DLS
+1573 2385 1591 2385 2 DLS
+1573 2451 1591 2451 2 DLS
+1878 2385 1896 2385 2 DLS
+1753 2352 1771 2352 2 DLS
+1753 2418 1771 2418 2 DLS
+2075 2319 2093 2319 2 DLS
+1950 2286 1968 2286 2 DLS
+1950 2352 1968 2352 2 DLS
+2273 2252 2290 2252 2 DLS
+2147 2219 2165 2219 2 DLS
+2147 2286 2165 2286 2 DLS
+4478 2766 4478 2733 2 DLS
+4532 2833 4550 2833 2 DLS
+4406 2799 4424 2799 2 DLS
+4406 2866 4424 2866 2 DLS
+4101 2882 4119 2882 2 DLS
+4030 2882 4048 2882 2 DLS
+4335 2915 4352 2915 2 DLS
+4209 2882 4227 2882 2 DLS
+4209 2949 4227 2949 2 DLS
+3904 2683 3922 2683 2 DLS
+3832 2683 3850 2683 2 DLS
+4155 2783 4173 2783 2 DLS
+4030 2750 4048 2750 2 DLS
+4030 2816 4048 2816 2 DLS
+4321 2766 4352 2766 2 DLS
+4209 2750 4227 2750 2 DLS
+4209 2783 4227 2783 2 DLS
+3904 2833 3904 2799 2 DLS
+3958 2899 3976 2899 2 DLS
+3832 2866 3850 2866 2 DLS
+3832 2932 3850 2932 2 DLS
+3528 2949 3546 2949 2 DLS
+3456 2949 3474 2949 2 DLS
+3761 2982 3779 2982 2 DLS
+3635 2949 3653 2949 2 DLS
+3635 3015 3653 3015 2 DLS
+3330 2750 3348 2750 2 DLS
+3259 2750 3277 2750 2 DLS
+3581 2849 3599 2849 2 DLS
+3456 2816 3474 2816 2 DLS
+3456 2882 3474 2882 2 DLS
+3747 2833 3779 2833 2 DLS
+3635 2816 3653 2816 2 DLS
+3635 2849 3653 2849 2 DLS
+3330 2899 3330 2866 2 DLS
+3384 2965 3402 2965 2 DLS
+3259 2932 3277 2932 2 DLS
+3259 2998 3277 2998 2 DLS
+2954 3015 2972 3015 2 DLS
+2882 3015 2900 3015 2 DLS
+3187 3048 3205 3048 2 DLS
+3061 3015 3079 3015 2 DLS
+3061 3081 3079 3081 2 DLS
+2757 2816 2775 2816 2 DLS
+2685 2816 2703 2816 2 DLS
+3008 2915 3026 2915 2 DLS
+2882 2882 2900 2882 2 DLS
+2882 2949 2900 2949 2 DLS
+3173 2899 3205 2899 2 DLS
+3061 2882 3079 2882 2 DLS
+3061 2915 3079 2915 2 DLS
+2757 2982 2757 2949 2 DLS
+2810 3048 2828 3048 2 DLS
+2685 3015 2703 3015 2 DLS
+2685 3081 2703 3081 2 DLS
+2434 3048 2452 3048 2 DLS
+2362 3048 2380 3048 2 DLS
+2613 3081 2631 3081 2 DLS
+2488 3048 2506 3048 2 DLS
+2488 3114 2506 3114 2 DLS
+2237 2882 2255 2882 2 DLS
+2165 2882 2183 2882 2 DLS
+2434 2982 2452 2982 2 DLS
+2362 2965 2380 2965 2 DLS
+2362 2998 2380 2998 2 DLS
+2599 2965 2631 2965 2 DLS
+2488 2949 2506 2949 2 DLS
+2488 2982 2506 2982 2 DLS
+2237 2998 2237 2965 2 DLS
+2290 3065 2308 3065 2 DLS
+2165 3031 2183 3031 2 DLS
+2165 3098 2183 3098 2 DLS
+1932 3081 1950 3081 2 DLS
+1860 3081 1878 3081 2 DLS
+2111 3098 2129 3098 2 DLS
+2039 3081 2057 3081 2 DLS
+2039 3114 2057 3114 2 DLS
+2111 3031 2129 3031 2 DLS
+2039 3015 2057 3015 2 DLS
+2039 3031 2057 3031 2 DLS
+2039 3048 2057 3048 2 DLS
+1932 3197 1932 3164 2 DLS
+1986 3264 2004 3264 2 DLS
+1860 3230 1878 3230 2 DLS
+1860 3297 1878 3297 2 DLS
+1627 3280 1645 3280 2 DLS
+1555 3280 1573 3280 2 DLS
+1806 3297 1824 3297 2 DLS
+1735 3280 1753 3280 2 DLS
+1735 3313 1753 3313 2 DLS
+1806 3230 1824 3230 2 DLS
+1735 3214 1753 3214 2 DLS
+1735 3230 1753 3230 2 DLS
+1735 3247 1753 3247 2 DLS
+1627 3396 1627 3363 2 DLS
+1681 3462 1699 3462 2 DLS
+1555 3429 1573 3429 2 DLS
+1555 3496 1573 3496 2 DLS
+1322 3479 1340 3479 2 DLS
+1251 3479 1268 3479 2 DLS
+1502 3496 1519 3496 2 DLS
+1430 3479 1448 3479 2 DLS
+1430 3512 1448 3512 2 DLS
+1502 3429 1519 3429 2 DLS
+1430 3413 1448 3413 2 DLS
+1430 3429 1448 3429 2 DLS
+1430 3446 1448 3446 2 DLS
+1322 3595 1322 3562 2 DLS
+1376 3661 1394 3661 2 DLS
+1251 3628 1268 3628 2 DLS
+1251 3694 1268 3694 2 DLS
+1017 3678 1035 3678 2 DLS
+946 3678 964 3678 2 DLS
+1161 3694 1179 3694 2 DLS
+1089 3678 1107 3678 2 DLS
+1089 3711 1107 3711 2 DLS
+1161 3628 1179 3628 2 DLS
+1089 3612 1107 3612 2 DLS
+1089 3628 1107 3628 2 DLS
+1089 3645 1107 3645 2 DLS
+784 3628 802 3628 2 DLS
+749 3628 766 3628 2 DLS
+1190 3529 1215 3529 2 DLS
+1089 3512 1107 3512 2 DLS
+1089 3545 1107 3545 2 DLS
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 7494 2871 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 7494 2937 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 7118 2855 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 7118 2921 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 6741 2838 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 6741 2904 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 6365 2821 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 6365 2888 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 5988 2805 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 5988 2871 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 5665 2788 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 5665 2855 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 5343 2772 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 5343 2838 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 5020 2755 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 5020 2821 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 4428 2805 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 4428 2871 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 3854 2871 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 3854 2937 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 3281 2937 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 3281 3004 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 2707 3020 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 2707 3087 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 2187 3037 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 2187 3103 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 1882 3236 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 1882 3302 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 1577 3435 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 1577 3501 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 0] 1273 3634 (LEFT) -7 cxshow
+/SETFONT 14 def
+/SETANGLE 0 def
+wo 0 15 put
+wo 1 15 put
+wo 2 15 put
+wo 3 15 put
+/Use_Ratio 1 def
+[ 0 2 3 4] 1273 3700 (LEFT) -7 cxshow
+360 459 8059 459 8059 5493 360 5493 360 459  setclip
+stroke
+gsave showpage grestore
+greset
+%%EOF

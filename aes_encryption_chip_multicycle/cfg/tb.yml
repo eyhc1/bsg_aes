@@ -18,6 +18,9 @@ sim.inputs.tb_input_files: [
   "testbench/aes_encryption_tb.sv",
   "testbench/encryption_rounds_tb.sv",
   "testbench/bsg_aes_encrypt_tb.sv",
+  "testbench/key_expansion_tb.sv",
+  "testbench/round_key_tb.sv",
+  "testbench/rom_sbox_tb.sv",
 
   # BSG utilities
   "${bsg_root}/bsg_misc/bsg_defines.v",

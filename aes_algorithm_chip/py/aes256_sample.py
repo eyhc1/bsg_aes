@@ -20,11 +20,11 @@ def aes_encrypt(plaintext, key):
 plaintext_example = "00112233445566778899aabbccddeeff"
 key_example = "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
 
-test = "112233445566778899aabbccddeeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+test = "90ac555ee31bdab0518da6362d41a4acf5034c4dbe6a6d6eb72fab5ef960c28192db0029cdd7a380e6010762ed1a5377"
 
 # Encrypt and display the output
-# encrypted_output = aes_encrypt(test[:32], test[32:])
-encrypted_output = aes_encrypt(plaintext_example, key_example)
+encrypted_output = aes_encrypt(test[:32], test[32:])
+# encrypted_output = aes_encrypt(plaintext_example, key_example)
 print("Encrypted Output:", encrypted_output)
 
 
@@ -34,3 +34,26 @@ print("Encrypted Output:", encrypted_output)
 # # Encrypt and display the output
 # encrypted_output = aes_encrypt(plaintext_example, key_example)
 # print("Encrypted Output:", encrypted_output)
+
+# inputs = open("input.txt", "r").readlines()
+# outputs = open("output.txt", "r").readlines()
+
+# for i in range(len(inputs)):
+#     data = inputs[i].strip()
+#     # pad the data to 96 characters if it is less than 96 characters
+#     if len(data) < 96:
+#         data = "0"*(96-len(data)) + data
+
+#     # Create a new AES cipher with ECB mode
+#     cipher = Cipher(algorithms.AES(bytes.fromhex(data[32:])), modes.ECB(), backend=default_backend())
+
+#     # Encrypt the plaintext
+#     encryptor = cipher.encryptor()
+#     ciphertext = encryptor.update(bytes.fromhex(data[:32])) + encryptor.finalize()
+
+#     encrypted_output = ciphertext.hex()
+
+#     data_o = outputs[i].strip()
+#     assert data_o == encrypted_output, f"Data mismatch when input is: {data}\n Expected: {data_o}, Got: {encrypted_output}"
+
+# print("All tests passed!")

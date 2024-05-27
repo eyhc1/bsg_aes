@@ -21,8 +21,8 @@ module aes_encryption_tb();
     initial begin
         reset_i <= 1; @(posedge clk_i); // Always reset FSMs at start
         reset_i <= 0; 
-        // plaintext   <= 128'h00112233445566778899aabbccddeeff;
-        plaintext   <= 128'haa;
+        plaintext   <= 128'h00112233445566778899aabbccddeeff;
+        // plaintext   <= 128'haa;
         initial_key <= 256'h000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f;
         repeat(16) @(posedge clk_i);
         $display("[%d] Send Plaintext: %h with Key: %h", $time, plaintext, initial_key);

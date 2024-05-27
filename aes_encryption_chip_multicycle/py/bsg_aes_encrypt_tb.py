@@ -9,12 +9,15 @@ import cocotb
 from cocotb.clock import Clock, Timer
 from cocotb.triggers import RisingEdge, FallingEdge, Timer
 
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.backends import default_backend
+
 
 # Data width, matching width_p parameter in DUT
 WIDTH_P = 128 + 256
 
 # Testbench iterations
-ITERATION = 16
+ITERATION = 100
 
 # Flow control random seed
 # Use different seeds on input and output sides for more randomness
@@ -58,8 +61,8 @@ async def input_side_testbench(dut, seed):
             # Check DUT ready signal
             if dut.ready_o == 1:
                 # Generate send data
-                # immval = int(''.join(data_random.choice(CHARS) for _ in range(32+64)), 16)
-                immval = int("00112233445566778899aabbccddeeff" + "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f", 16)
+                immval = int(''.join(data_random.choice(CHARS) for _ in range(32+64)), 16)
+                # immval = int("00112233445566778899aabbccddeeff" + "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f", 16)
                 dut.data_i.setimmediatevalue(immval)
                 dut._log.info("Sent: %02x", immval)
                 # iteration increment
@@ -106,7 +109,25 @@ async def output_side_testbench(dut, seed):
             
             # # Generate check data and compare with receive data
             # assert dut.data_o.value == math.floor(data_random.random()*pow(2, WIDTH_P)), "data mismatch!"
-            dut._log.info("Recieved: %02x", dut.data_o.value)
+            data = dut.data_o.value.integer.to_bytes((dut.data_o.value.integer.bit_length() + 7) // 8, 'big')[:16]
+
+            ################################ Software Equivalent Model #####################################
+            data_i = ''.join(data_random.choice(CHARS) for _ in range(32+64))
+            # pad the data to 96 characters if it is less than 96 characters
+            if len(data_i) < 96:
+                data_i = "0"*(96-len(data)) + data
+
+            # Create a new AES cipher with ECB mode
+            cipher = Cipher(algorithms.AES(bytes.fromhex(data_i[32:])), modes.ECB(), backend=default_backend())
+
+            # Encrypt the plaintext
+            encryptor = cipher.encryptor()
+            ciphertext = encryptor.update(bytes.fromhex(data_i[:32])) + encryptor.finalize()
+            #################################### End Software Model #######################################
+
+            dut._log.info("Received: %s", data.hex())
+            
+            assert data.hex() == ciphertext.hex(), f"Data mismatch when input is: {data_i}\n Expected: {ciphertext.hex()}, Got: {data.hex()}"
             
             # iteration increment
             i += 1

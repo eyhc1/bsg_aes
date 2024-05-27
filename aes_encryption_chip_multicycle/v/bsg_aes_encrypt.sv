@@ -3,13 +3,11 @@
 module bsg_aes_encrypt (
     input clk_i,
     input reset_i,
-    // input [127:0] plaintext,
-    // input [255:0] initial_key,
     // output logic [127:0] ciphertext,
     // output logic [128 * 15 - 1:0] key_chain,
 
     input [128 + 256 - 1:0] data_i,
-    output [127:0] data_o,
+    output [2047:0] data_o,
     
     // added for BSG handshakes
     input v_i,
@@ -23,6 +21,7 @@ logic [127:0] plaintext;
 logic [255:0] initial_key;
 
 logic [127:0] ciphertext;
+logic [128 * 15 - 1:0] key_chain;
 
 logic v_o_d1, ready_o_d1;
 
@@ -32,40 +31,64 @@ logic fifo_v_o, fifo_ready_o;
 logic fifo_v_o_mux_dff, fifo_ready_o_mux_dff;
 
 logic encrypted;
+logic [3:0] counter_n, counter_r;
+logic [2047:0] data_n, data_r;
 
+typedef enum logic [1:0] {WAIT, BUSY, DONE} state_e;
+state_e  state_n, state_r;
 
-// logic [3:0] counter;
+assign  ready_o = state_r == WAIT;
+assign      v_o = state_r == DONE;
 
-// // Fifo 
-// bsg_fifo_1r1w_small_hardened #(
-//     .width_p(128 + 256)
-//     ,.els_p(16)
-//     ,.ready_THEN_valid_p(1)
-//     ) fifo (
-//         .clk_i(clk_i),
-//         .reset_i(reset_i),
-//         .data_i(data_i),
-//         .data_o({plaintext, initial_key}),
-//         .v_i(v_i),
-//         .v_o(fifo_v_o),
-//         .yumi_i(yumi_i),
-//         .ready_o(fifo_ready_o)
-//     );
+assign counter_n = (ready_o & v_i) ? 4'hf : 
+                (state_r == BUSY) ? counter_r - 1'b1 : counter_r;
+
+assign data_n = (state_r == WAIT) ? data_i : data_r;
+
+// State transition logic
+always_comb
+begin
+   state_n = state_r;
+   if (ready_o & v_i) begin
+     state_n = BUSY;
+   end else if (state_r == BUSY & (counter_n == 4'b0)) begin
+     state_n = DONE;
+   end else if (v_o & yumi_i) begin
+     state_n = WAIT;
+   end
+end
+
 // AES encryption module
 aes_encryption encrypt_chip(
         .clk_i(clk_i),
         .reset_i(reset_i),
         // .plaintext(data_i[128 + 256 - 1:256]),
         // .initial_key(data_i[255:0]),
-        .plaintext(plaintext),
-        .initial_key(initial_key),
+        .plaintext(data_r[128 + 256 - 1:256]),
+        .initial_key(data_r[255:0]),
         .ciphertext(ciphertext),
-        .key_chain(/* Unconnected for now */)
+        .key_chain(key_chain)
     );
-// TODO: the data may not be ready yet until at least 16 cycles later
-assign data_o = ciphertext;
-assign v_o = fifo_v_o;
-assign ready_o = fifo_ready_o & ready_o_d1;
+// // TODO: the data may not be ready yet until at least 16 cycles later
+assign data_o = {ciphertext, key_chain};
+// assign v_o = fifo_v_o;
+// assign ready_o = fifo_ready_o;
+
+// State register
+always_ff @(posedge clk_i)
+begin
+    if (reset_i)
+        state_r <= WAIT;
+    else
+        state_r <= state_n;
+end
+
+// data register
+always_ff @(posedge clk_i)
+begin
+    data_r <= data_n;
+    counter_r <= counter_n;
+end
 
 
 

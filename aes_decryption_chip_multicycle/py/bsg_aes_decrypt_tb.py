@@ -14,9 +14,6 @@ from cryptography.hazmat.backends import default_backend
 
 from gen_key_expand import key_expansion
 
-# Data width, matching width_p parameter in DUT
-WIDTH_P = 128 + 256
-
 # Testbench iterations
 ITERATION = 1000
 
@@ -62,8 +59,23 @@ async def input_side_testbench(dut, seed):
             # Check DUT ready signal
             if dut.ready_o == 1:
                 # Generate send data
-                immval = int(''.join(data_random.choice(CHARS) for _ in range(32+64)), 16)
-                # immval = int("00112233445566778899aabbccddeeff" + "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f", 16)
+                data_i = ''.join(data_random.choice(CHARS) for _ in range(32+64))
+                ##################################### Data Generation ##########################################
+                # pad the data to 96 characters if it is less than 96 characters
+                if len(data_i) < 96:
+                    data_i = "0"*(96-len(data)) + data
+                    
+                expanded_key = key_expansion(data_i[32:])
+
+                # Create a new AES cipher with ECB mode
+                cipher = Cipher(algorithms.AES(bytes.fromhex(data_i[32:])), modes.ECB(), backend=default_backend())
+
+                # Encrypt the plaintext
+                encryptor = cipher.encryptor()
+                ciphertext = encryptor.update(bytes.fromhex(data_i[:32])) + encryptor.finalize()
+                #################################### End Data Generation #######################################
+                immval = int(ciphertext.hex() + expanded_key, 16)
+                # immval = int("8ea2b7ca516745bfeafc49904b496089" + "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1fa573c29fa176c498a97fce93a572c09c1651a8cd0244beda1a5da4c10640badeae87dff00ff11b68a68ed5fb03fc15676de1f1486fa54f9275f8eb5373b8518dc656827fc9a799176f294cec6cd5598b3de23a75524775e727bf9eb45407cf390bdc905fc27b0948ad5245a4c1871c2f45f5a66017b2d387300d4d33640a820a7ccff71cbeb4fe5413e6bbf0d261a7dff01afafee7a82979d7a5644ab3afe6402541fe719bf500258813bbd55a721c0a4e5a6699a9f24fe07e572baacdf8cdea24fc79ccbf0979e9371ac23c6d68de36", 16)
                 dut.data_i.setimmediatevalue(immval)
                 dut._log.info("Sent: %02x", immval)
                 # iteration increment
@@ -107,33 +119,14 @@ async def output_side_testbench(dut, seed):
         if dut.v_o.value == 1 and control_random.random() >= 0.5:
             # Assert DUT yumi signal
             dut.yumi_i.setimmediatevalue(1)
-            
-            # # Generate check data and compare with receive data
             data = dut.data_o.value.integer.to_bytes((dut.data_o.value.integer.bit_length() + 7) // 8, 'big').hex()
-            # pad to 512 bytes if less than that
-            if len(data) < 512:
-                data = "0"*(512-len(data)) + data
-
-            ################################ Software Equivalent Model #####################################
+            if len(data) < 32:
+                data = "0"*(32-len(data)) + data
+            dut._log.info("Received: %s", data)
+            
+            # check with the software model
             data_i = ''.join(data_random.choice(CHARS) for _ in range(32+64))
-            # data_i = "00112233445566778899aabbccddeeff" + "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
-            # pad the data to 96 characters if it is less than 96 characters
-            if len(data_i) < 96:
-                data_i = "0"*(96-len(data_i)) + data_i
-                
-            expanded_key = key_expansion(data_i[32:])
-
-            # Create a new AES cipher with ECB mode
-            cipher = Cipher(algorithms.AES(bytes.fromhex(data_i[32:])), modes.ECB(), backend=default_backend())
-
-            # Encrypt the plaintext
-            encryptor = cipher.encryptor()
-            ciphertext = encryptor.update(bytes.fromhex(data_i[:32])) + encryptor.finalize()
-            #################################### End Software Model #######################################
-
-            dut._log.info("Received: %s", data[:32])
-            assert data[:32] == ciphertext.hex(), f"\nData mismatch when input is: {data_i}\n Expected: {ciphertext.hex()},\n Got: {data[:32]}"
-            assert data[32:] == expanded_key, f"\nKey mismatch when input is: {data_i}\n Expected: {expanded_key},\n Got: {data[32:]}"
+            assert data == data_i[:32], f"\nData mismatch!\n Expected: {data_i[:32]}\n Got: {data}"
             
             # iteration increment
             i += 1

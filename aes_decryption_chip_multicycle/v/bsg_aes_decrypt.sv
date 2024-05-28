@@ -1,13 +1,13 @@
 // AES256 Encryption Wrapper with BSG handshakes
 // for the input data, the top 128 bits are plaintext and the bottom 256 bits are the initial key
-module bsg_aes_encrypt (
+module bsg_aes_decrypt (
     input clk_i,
     input reset_i,
     // output logic [127:0] ciphertext,
     // output logic [128 * 15 - 1:0] key_chain,
 
-    input [128 + 256 - 1:0] data_i,
-    output [2047:0] data_o,
+    input [2047:0] data_i,
+    output [127:0] data_o,
     
     // added for BSG handshakes
     input v_i,
@@ -21,7 +21,7 @@ logic [127:0] plaintext;
 logic [255:0] initial_key;
 
 logic [127:0] ciphertext;
-logic [128 * 15 - 1:0] key_chain;
+logic [127 * 15 - 1:0] key_chain;
 
 logic v_o_d1, ready_o_d1;
 
@@ -59,17 +59,13 @@ begin
 end
 
 // AES encryption module
-aes_encryption encrypt_chip(
+aes_decryption decrypt_chip(
         .clk_i(clk_i),
         .reset_i(reset_i),
-        // .plaintext(data_i[128 + 256 - 1:256]),
-        // .initial_key(data_i[255:0]),
-        .plaintext(data_r[128 + 256 - 1:256]),
-        .initial_key(data_r[255:0]),
-        .ciphertext(ciphertext),
-        .key_chain(key_chain)
+        .ciphertext(data_r[2047:128 * 15]),
+        .key_chain(data_r[128 * 15 - 1:0]),
+        .plaintext(data_o)
     );
-assign data_o = {ciphertext, key_chain};
 
 // State register
 always_ff @(posedge clk_i)

@@ -41,3 +41,4 @@ vsim.dbg
 *.bak
 
 *.ini
+__pycache__

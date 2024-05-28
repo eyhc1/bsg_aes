@@ -14,10 +14,10 @@ export PYTHONPATH := $(HDL_DIR)/py
 
 # VCS Arguments
 EXTRA_ARGS += +v2k -l vcs.log
-EXTRA_ARGS += -debug_pp +vcs+vcdpluson
+EXTRA_ARGS += +vcs+vcdpluson
 EXTRA_ARGS += +lint=all,noSVA-UA,noSVA-NSVU,noVCDE,noNS -assert svaext
 EXTRA_ARGS += -cm line+fsm+branch+cond+tgl
-EXTRA_ARGS += -kdb -debug_access+all
+EXTRA_ARGS += +vcs+dumpvars+waveform.vcd
 
 # defaults
 SIM ?= vcs
@@ -66,25 +66,9 @@ MODULE = bsg_aes_encrypt_tb
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
 
-
-# VERDI open waveform
-ee-verdi:
-	verdi -ssf novas.fsdb &
-
-# VERDI open coverages
-ee-verdi-cov:
-	verdi -cov -covdir sim_build/simv.vdb &
-
-# **DEPRECATED** DVE open waveform
-ee-dve:
-	dve -full64 -vpd vcdplus.vpd &
-
-# **DEPRECATED** DVE open coverages
-ee-dve-cov:
-	dve -full64 -cov -covdir sim_build/simv.vdb &
-
 # Clean simulation files
 ee-clean:
 	make clean
 	rm -rf __pycache__ DVEfiles vcs.log vcdplus.vpd results.xml
 	rm -rf verdiLog vdCovLog novas.conf novas.fsdb novas.rc novas_dump.log
+	rm -rf waveform.vcd

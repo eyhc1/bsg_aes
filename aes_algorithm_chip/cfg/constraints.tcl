@@ -6,6 +6,14 @@
 #
 
 # TODO: add constraints here!
-create_clock -name vclk -period 5.0
-set_input_delay 0 -clock vclk [all_inputs]
-set_output_delay 0 -clock vclk [all_outputs]
+create_clock -name clk -period 100.0 [get_ports clk_i]
+set_clock_uncertainty 0.050 [get_clocks clk]
+
+# Always set the input/output delay as half periods for clock setup checks
+set_input_delay  1.0 -max -clock [get_clocks clk] [all_inputs]
+set_output_delay 1.0 -max -clock [get_clocks clk] [remove_from_collection [all_outputs] [get_ports clk_o]]
+
+# Always set the input/output delay as 0 for clock hold checks
+# TODO: do i need to remove clk_o from all_outputs for this task?
+set_input_delay  0.0 -min -clock [get_clocks clk] [all_inputs]
+set_output_delay 0.0 -min -clock [get_clocks clk] [remove_from_collection [all_outputs] [get_ports clk_o]]

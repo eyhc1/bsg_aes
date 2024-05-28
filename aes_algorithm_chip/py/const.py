@@ -55,7 +55,7 @@ def all_key(k):
     return [item for sublist in k_all for item in sublist][:kz]
 
 def test():
-    k0 = [100]*32
+    k0 = [100,100,100,100]*4
     
     hex_list = [96, 61, 235, 16, 21, 202, 113, 190, 43, 115, 174, 240, 133, 125, 119, 129, 31, 53, 44, 7, 59, 97, 8, 215, 45, 152, 16, 163, 9, 20, 223, 244]
     print("Key0:", ''.join([f'{v:02x}' for v in k0]))
@@ -68,7 +68,7 @@ def test():
 
 
 if __name__ == '__main__':
-    test()
+    # test()
     # for i in range(len(SBOX)):
     #     print(f"8'h{format(i, '02x')}: rom_data = 8'h{format(SBOX[i], '02x')};")
 
@@ -95,6 +95,6 @@ if __name__ == '__main__':
     # inverted = ''.join(inverted)
     # print(inverted)
     
-    # hex_list = ["60", "3d", "eb", "10", "15", "ca", "71", "be", "2b", "73", "ae", "f0", "85", "7d", "77", "81", "1f", "35", "2c", "07", "3b", "61", "08", "d7", "2d", "98", "10", "a3", "09", "14", "df", "f4"]
-    # dec_list = [int(i, 16) for i in hex_list]
-    # print(dec_list)
+    hex_list = ["60", "3d", "eb", "10", "15", "ca", "71", "be", "2b", "73", "ae", "f0", "85", "7d", "77", "81", "1f", "35", "2c", "07", "3b", "61", "08", "d7", "2d", "98", "10", "a3", "09", "14", "df", "f4"]
+    dec_list = [int(i, 16) for i in hex_list]
+    print(dec_list)

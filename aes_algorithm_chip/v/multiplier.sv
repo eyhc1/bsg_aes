@@ -1,7 +1,7 @@
 module multiplier (
     input [7:0] num_1,
     input [7:0] num_2,
-    output logic [15:0] result
+    output logic [7:0] result
 );
 
     logic [7:0] temp_1;

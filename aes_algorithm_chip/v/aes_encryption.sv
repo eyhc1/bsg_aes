@@ -3,8 +3,8 @@ module aes_encryption(
     // input reset_i,
     input [127:0] plaintext,
     input [255:0] initial_key,
-    output reg [127:0] ciphertext,
-    output reg [1919:0] key_chain
+    output logic [127:0] ciphertext,
+    output logic [1919:0] key_chain
 );
 
     logic [127:0] states [15:0];

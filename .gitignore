@@ -2,6 +2,7 @@
 */verdiLog/*
 */out/*
 */__pycache__/*
+*/bsg_guts_gcd/*
 */work/*
 work
 *.log
@@ -42,3 +43,5 @@ vsim.dbg
 
 *.ini
 __pycache__
+
+bsg_guts_gcd

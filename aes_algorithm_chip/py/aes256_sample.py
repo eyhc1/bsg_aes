@@ -16,24 +16,24 @@ def aes_encrypt(plaintext, key):
     # Convert ciphertext to hex and return
     return ciphertext.hex()
 
-# Example inputs from section C.3
-plaintext_example = "00112233445566778899aabbccddeeff"
-key_example = "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+# # Example inputs from section C.3
+# plaintext_example = "00112233445566778899aabbccddeeff"
+# key_example = "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
 
-test = "65e321ea0a79884cd8c5c376d4d5d306714e976ed4395179418135eff805565c1cee84b1b7ae257802b9bb0bf5959bb1"
-
-# Encrypt and display the output
-encrypted_output = aes_encrypt(test[:32], test[32:])
-# encrypted_output = aes_encrypt(plaintext_example, key_example)
-print("Encrypted Output:", encrypted_output)
-
-
-# plaintext_example = "000000000000000000000000000000af"
-# key_example = "6464646464646464646464646464646464646464646464646464646464646464"
+# test = "65e321ea0a79884cd8c5c376d4d5d306714e976ed4395179418135eff805565c1cee84b1b7ae257802b9bb0bf5959bb1"
 
 # # Encrypt and display the output
-# encrypted_output = aes_encrypt(plaintext_example, key_example)
+# encrypted_output = aes_encrypt(test[:32], test[32:])
+# # encrypted_output = aes_encrypt(plaintext_example, key_example)
 # print("Encrypted Output:", encrypted_output)
+
+
+plaintext_example = "000000000000000000000000001f2b00"
+key_example = "6464646464646464646464646464646464646464646464646464646464646464"
+
+# Encrypt and display the output
+encrypted_output = aes_encrypt(plaintext_example, key_example)
+print("Encrypted Output:", encrypted_output)
 
 # inputs = open("input.txt", "r").readlines()
 # outputs = open("output.txt", "r").readlines()

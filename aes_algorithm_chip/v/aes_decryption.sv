@@ -2,7 +2,8 @@ module aes_decryption(
     // input clk_i,
     // input reset_i,
     input [127:0] ciphertext,
-    input [1919:0] key_chain,
+    // input [1919:0] key_chain,
+    input [255:0] initial_key,
     output reg [127:0] plaintext
 );
 
@@ -12,7 +13,13 @@ module aes_decryption(
     logic [127:0] final_afterShiftRows;
     logic [127:0] afterAddroundKey;
 
+    logic [1919:0] key_chain;
 
+    // generate the key chain
+    key_expansion get_keys(
+        .initial_key(initial_key),
+        .round_keys(key_chain)
+    );
 
     // initial round
     add_round_key initial_round(

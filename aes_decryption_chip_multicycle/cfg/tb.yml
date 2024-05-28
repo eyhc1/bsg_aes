@@ -16,6 +16,7 @@ sim.inputs.tb_input_files: [
   "testbench/inv_mix_columns_tb.sv",
   "testbench/aes_decryption_tb.sv",
   "testbench/decryption_rounds_tb.sv",
+  "testbench/bsg_aes_decrypt_tb.sv",
 
   # BSG utilities
   "${bsg_root}/bsg_misc/bsg_defines.v",
@@ -27,5 +28,5 @@ sim.inputs.tb_input_files_meta: [append, subst]
 
 # List of trace files for the simulation
 sim.inputs.trace_files: [
-  # TODO: list any trace files
+  testbench/trace.tr,
 ]

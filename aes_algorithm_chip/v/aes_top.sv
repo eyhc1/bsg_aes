@@ -22,12 +22,13 @@ logic[127:0] expected_d256 = 128'h00112233445566778899aabbccddeeff;
 aes_encryption encruot (
         .plaintext(in),
         .initial_key(key256),
-        .ciphertext(encrypted256),
-        .key_chain(key_chain)
+        .ciphertext(encrypted256)
+        // .key_chain(key_chain)
     );
 aes_decryption decruot (
         .ciphertext(encrypted256),
-        .key_chain(key_chain),
+        // .key_chain(key_chain),
+        .initial_key(key256),
         .plaintext(decrypted256)
     );
 

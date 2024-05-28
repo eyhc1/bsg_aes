@@ -13,6 +13,7 @@ synthesis.inputs.input_files: [
   "v/inv_mix_columns.sv",
   "v/aes_decryption.sv",
   "v/decryption_rounds.sv",
+  "v/bsg_aes_decrypt.sv",
 ]
 synthesis.inputs.input_files_meta: [append, subst]
 

@@ -29,5 +29,6 @@ sim.inputs.tb_input_files_meta: [append, subst]
 
 # List of trace files for the simulation
 sim.inputs.trace_files: [
-  # TODO: list any trace files
+  # TODO: list any trace files trace.tr
+  "testbench/trace.tr",
 ]

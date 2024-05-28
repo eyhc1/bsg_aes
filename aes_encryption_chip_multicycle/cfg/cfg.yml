@@ -1,8 +1,8 @@
 # Main hammer config file
 
 # TODO: Set top levels
-synthesis.inputs.top_module: "aes_encryption"
-sim.inputs.tb_name: "aes_encryption_tb"
+synthesis.inputs.top_module: "bsg_aes_encrypt"
+sim.inputs.tb_name: "bsg_aes_encrypt_tb"
 # Don't synthesize these gate-level netlist modules
 # TODO: List the names of any modules that don't require synthesis
 synthesis.inputs.preserve_modules: []

@@ -10,6 +10,9 @@ OBJ_DIR = build
 INPUT_CFGS =cfg/cfg.yml cfg/src.yml
 TB_CFGS = cfg/tb.yml
 
+.PHONY: $(TRACE_FILE)
+$(TRACE_FILE):
+	python3 ./py/gen_trace.py
 
 # Main Hammer Targets
 include $(TOP_DIR)/module_top.mk

@@ -336,22 +336,15 @@ module bsg_guts
 
     .data_i({{encrypt_data_width_lp'(0), core_fsb_data_lo}, 256'h6464646464646464646464646464646464646464646464646464646464646464}),  // for now
     .v_i(core_fsb_valid_lo),
-    .yumi_i(core_cl_ready_lo_enc),
+    // .yumi_i(core_cl_ready_lo_enc & core_fsb_valid_lo),
+    // .yumi_i(core_cl_ready_lo_enc & core_fsb_valid_lo_enc),
+    // .yumi_i(core_cl_ready_lo_enc),
+    .yumi_i(core_fsb_valid_lo_enc & core_cl_ready_lo_enc),
 
     .data_o(core_fsb_data_lo_enc),
     .v_o(core_fsb_valid_lo_enc),
     .ready_o(core_cl_ready_lo)
   );
-
-  // logic [127:0] ciphertext;
-  // logic [1919:0] key_chain;
-
-  // aes_encryption encrypt_data (
-  //   .plaintext({encrypt_data_width_lp'(0), core_fsb_data_lo}),
-  //   .initial_key(256'h6464646464646464646464646464646464646464646464646464646464646464),
-  //   .ciphertext(ciphertext),
-  //   .key_chain(key_chain)
-  // );
    
    // link upstream (on one side)
    bsg_link_ddr_upstream #(
@@ -373,7 +366,6 @@ module bsg_guts
    ,.async_token_reset_i (async_token_reset)   
    
   //  // out of nodes (fsb interface) 
-  // //  ,.core_data_i        (core_fsb_data_lo)
   //  ,.core_data_i        ({ciphertext, key_chain})         
   //  ,.core_valid_i       (core_fsb_valid_lo)
   //  ,.core_ready_o       (core_cl_ready_lo)
@@ -394,7 +386,7 @@ module bsg_guts
   );
 
   logic [2047:0] core_cl_data_lo_dec;
-  logic core_cl_valid_lo_dec, core_fsb_yumi_lo_dec;
+  logic core_cl_valid_lo_dec, core_fsb_yumi_lo_dec, core_fsb_ready_lo_dec;
 
   logic [127:0] core_cl_data_lo_128;
 
@@ -406,18 +398,15 @@ module bsg_guts
 
     .data_i(core_cl_data_lo_dec),
     .v_i(core_cl_valid_lo_dec),
+    // .yumi_i(core_fsb_yumi_lo & core_cl_valid_lo_dec),
     .yumi_i(core_fsb_yumi_lo),
 
     .data_o(core_cl_data_lo_128),
     .v_o(core_cl_valid_lo),
-    .ready_o(core_fsb_yumi_lo_dec)
+    // .ready_o(core_fsb_yumi_lo_dec)
+    .ready_o(core_fsb_ready_lo_dec)
   );
 
-  // aes_decryption decrypt_data (
-  //     .ciphertext(core_cl_data_lo_dec[2047:1920]),
-  //     .key_chain(core_cl_data_lo_dec[1919:0]),
-  //     .plaintext(core_cl_data_lo_128)
-  // );
   
    // link downstream (on the same side as upstream)
    bsg_link_ddr_downstream #(
@@ -445,7 +434,9 @@ module bsg_guts
   //  // into nodes (fsb interface)
    ,.core_data_o        (core_cl_data_lo_dec)
    ,.core_valid_o       (core_cl_valid_lo_dec)
-   ,.core_yumi_i        (core_fsb_yumi_lo_dec)
+  //  ,.core_yumi_i        (core_fsb_yumi_lo_dec & core_cl_valid_lo)
+  //  ,.core_yumi_i        (core_fsb_yumi_lo_dec)
+   ,.core_yumi_i(core_cl_valid_lo_dec & core_fsb_ready_lo_dec)
    
    // in from i/o
    ,.io_clk_i           (io_clk_tline_i) // clk from upstream's io_clk_r_o

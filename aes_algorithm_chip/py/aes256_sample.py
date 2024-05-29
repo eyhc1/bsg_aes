@@ -22,13 +22,13 @@ def aes_encrypt(plaintext, key):
 
 # test = "65e321ea0a79884cd8c5c376d4d5d306714e976ed4395179418135eff805565c1cee84b1b7ae257802b9bb0bf5959bb1"
 
-test = "004336842f7e28abc11a612991a6947f714e976ed4395179418135eff805565c1cee84b1b7ae257802b9bb0bf5959bb15a5a5f888e630ef1cfe23b1e37e76d42867ab89d31d49de5336d26eec6f8bd5f1920903c97439ecd58a1a5d36f46c8912e20501c1ff4cdf92c99eb17ea615648f291c2bb65d25c763d73f9a5523531342eb6970431425afd1ddbb1eaf7bae7a20e05f8d36bd7a4a556a45d0004916c34dc37c71ced759de1f0ae2c0b0714cba9e41a2b168fcd8fb3d969d2b3ddf8be871d76690bf003f4ea00add8e107b91348926779d31daaf660c4c324d3193b9a54c994d12b399725c1393afd203e83ee683e4f3c6123e5ca01e726eed2fe1d7486"
-test_bin = str(bin(int(test, 16))[2:])
+# test = "004336842f7e28abc11a612991a6947f714e976ed4395179418135eff805565c1cee84b1b7ae257802b9bb0bf5959bb15a5a5f888e630ef1cfe23b1e37e76d42867ab89d31d49de5336d26eec6f8bd5f1920903c97439ecd58a1a5d36f46c8912e20501c1ff4cdf92c99eb17ea615648f291c2bb65d25c763d73f9a5523531342eb6970431425afd1ddbb1eaf7bae7a20e05f8d36bd7a4a556a45d0004916c34dc37c71ced759de1f0ae2c0b0714cba9e41a2b168fcd8fb3d969d2b3ddf8be871d76690bf003f4ea00add8e107b91348926779d31daaf660c4c324d3193b9a54c994d12b399725c1393afd203e83ee683e4f3c6123e5ca01e726eed2fe1d7486"
+# test_bin = str(bin(int(test, 16))[2:])
 
-if len(test_bin) < 2048:
-    test_bin = "0"*(2048-len(test_bin)) + test_bin
+# if len(test_bin) < 2048:
+#     test_bin = "0"*(2048-len(test_bin)) + test_bin
     
-print(test_bin)
+# print(test_bin)
 
 # print("0"*2048)
 
@@ -45,12 +45,12 @@ print(test_bin)
 # encrypted_output = aes_encrypt(plaintext_example, key_example)
 # print("Encrypted Output:", encrypted_output)
 
-# plaintext_example = "000000000000000000001f2b00000316"
-# key_example = "00000000000000000000000000000000000000000000000000001f2b00000316"
+plaintext_example = "00000000000000000000000000031624"
+key_example = "6464646464646464646464646464646464646464646464646464646464646464"
 
-# # Encrypt and display the output
-# encrypted_output = aes_encrypt(plaintext_example, key_example)
-# print("Encrypted Output:", encrypted_output)
+# Encrypt and display the output
+encrypted_output = aes_encrypt(plaintext_example, key_example)
+print("Encrypted Output:", encrypted_output)
 
 
 # inputs = open("input.txt", "r").readlines()

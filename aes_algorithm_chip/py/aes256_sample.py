@@ -1,6 +1,6 @@
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
-
+# harware encrypt: 360000ns
 def aes_encrypt(plaintext, key):
     # Convert plaintext and key from hex to bytes
     plaintext_bytes = bytes.fromhex(plaintext)

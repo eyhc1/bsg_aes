@@ -1,0 +1,60 @@
+# License
+
+## Original Files
+
+The following directories are derived from the [ee478-designs-project](https://github.com/bsg-external/ee478-designs-project) and are subject to the Solderpad Hardware License v0.51:
+
+- bsg_empty
+- bsg_empty_cell
+- common
+
+A copy of the Solderpad Hardware License v0.51 is included below:
+
+This repository was created by Michael Taylor as educational/course
+materials for the UCSD CSE 240B class.
+
+Copyright 2016 Michael B. Taylor. Copyright and related rights are licensed 
+under the Solderpad Hardware License, Version 0.51 (the “License”); you 
+may not use these files except in compliance with the License. You may 
+obtain a copy of the License at http://solderpad.org/licenses/SHL-0.51. 
+Unless required by applicable law or agreed to in writing, software, hardware 
+and materials distributed under this License is distributed on an “AS IS” 
+BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied. See the License for the specific language governing permissions and 
+limitations under the License.
+
+## Modified Files
+
+The following files have been modified from the original repository and are also subject to the Solderpad Hardware License v0.51:
+
+- bsg_empty/cfg/cfg.yml
+- bsg_empty/cfg/constraints.tcl
+- bsg_empty/cfg/src.yml
+- bsg_empty/cfg/tb.yml
+- bsg_empty/py/default_sim_cfg.yml
+- bsg_empty/v/bsg_gateway_chip.v
+- bsg_empty_cell/cfg/cfg.yml
+- bsg_empty_cell/v/bsg_empty_cell_tb.v
+- common/v/bsg_guts.v
+
+The followin files/directories have been added to and are also subject to the Solderpad Hardware License v0.51:
+
+- bsg_empty/cfg/verification.yml
+- common/v/decryption/
+- common/v/encryption/
+
+## New Files
+
+The remaining files in this repository are my own work and are licensed under Solderpad Hardware License v0.51.
+
+Copyright 2024 Eric Yu. Copyright and related rights are licensed 
+under the Solderpad Hardware License, Version 0.51 (the “License”); you 
+may not use these files except in compliance with the License. You may 
+obtain a copy of the License at http://solderpad.org/licenses/SHL-0.51. 
+Unless required by applicable law or agreed to in writing, software, hardware 
+and materials distributed under this License is distributed on an “AS IS” 
+BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied. See the License for the specific language governing permissions and 
+limitations under the License.
+
+

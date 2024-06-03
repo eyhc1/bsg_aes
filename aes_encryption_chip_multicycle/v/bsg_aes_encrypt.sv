@@ -3,8 +3,6 @@
 module bsg_aes_encrypt (
     input clk_i,
     input reset_i,
-    // output logic [127:0] ciphertext,
-    // output logic [128 * 15 - 1:0] key_chain,
 
     input [128 + 256 - 1:0] data_i,
     output [2047:0] data_o,
@@ -62,8 +60,6 @@ end
 aes_encryption encrypt_chip(
         .clk_i(clk_i),
         .reset_i(reset_i),
-        // .plaintext(data_i[128 + 256 - 1:256]),
-        // .initial_key(data_i[255:0]),
         .plaintext(data_r[128 + 256 - 1:256]),
         .initial_key(data_r[255:0]),
         .ciphertext(ciphertext),

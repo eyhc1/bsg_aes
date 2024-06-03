@@ -16,6 +16,12 @@ vlsi.inputs:
   custom_sdc_files:
     - "constraints.tcl"
   custom_sdc_files_meta: prependlocal # Prepend path of this config file!
+  pin.assignments: [
+    # This actually doesn't do anything...
+    {pins: "data_i[*]", layers: ["met2"], side: "bottom"}, # inputs
+    {pins: "data_o[*]", layers: ["met2"], side: "top"}, # outputs
+    {pins: "*", layers: ["met2"], side: "bottom"}, # Default to bottom
+  ] 
 
 # Formal HDL commands (for parsing source files)
 # Copy sim input options, since they share the same syntax for some commands
@@ -26,9 +32,8 @@ formal.imputs.hdl_cmd_list_meta: [crossref, subst]
 vlsi.inputs.placement_constraints:
   - path: "TOP" # (this name isn't actually checked...)
     type: toplevel
-    # TODO: define chip dimensions
-    width:  5000
-    height: 5000
+    width:  4225
+    height: 1600
     x: 0
     y: 0
     margins: {left: 0, right: 0, top: 0, bottom: 0}

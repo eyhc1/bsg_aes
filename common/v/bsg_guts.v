@@ -32,6 +32,7 @@ module bsg_guts
   ,parameter bit [1:0][dirs_p-1:0][dirs_p-1:0] routing_matrix_p = StrictX
   ,parameter len_width_p = 4
   ,localparam cord_width_lp = cord_markers_pos_p[dims_p]
+  ,localparam encrypt_data_width_lp = 128 - flit_width_p
   )
    (
     input core_clk_i
@@ -325,9 +326,30 @@ module bsg_guts
    logic [num_channels_p-1:0][channel_width_p-1:0] io_data_tline_li;
    for (genvar j = 0; j < num_channels_p; j++)
     assign io_data_tline_li[j] = io_data_tline_i[j];
+
+  logic [2047:0] core_fsb_data_lo_enc;
+  logic core_fsb_valid_lo_enc, core_cl_ready_lo_enc;
+  
+  bsg_aes_encrypt encrypt_data (
+    .clk_i(core_clk_i),
+    .reset_i(core_clk_link_reset),
+
+    .data_i({{encrypt_data_width_lp'(0), core_fsb_data_lo}, 256'h6464646464646464646464646464646464646464646464646464646464646464}),  // for now
+    .v_i(core_fsb_valid_lo),
+    // .yumi_i(core_cl_ready_lo_enc & core_fsb_valid_lo),
+    // .yumi_i(core_cl_ready_lo_enc & core_fsb_valid_lo_enc),
+    // .yumi_i(core_cl_ready_lo_enc),
+    .yumi_i(core_fsb_valid_lo_enc & core_cl_ready_lo_enc),
+
+    .data_o(core_fsb_data_lo_enc),
+    .v_o(core_fsb_valid_lo_enc),
+    .ready_o(core_cl_ready_lo)
+  );
    
    // link upstream (on one side)
-   bsg_link_ddr_upstream #(.width_p (flit_width_p)
+   bsg_link_ddr_upstream #(
+                           .width_p (2048)
+                          //  .width_p (flit_width_p)
                           ,.channel_width_p (channel_width_p)
                           ,.num_channels_p  (num_channels_p)
                           //,.lg_fifo_depth_p () use default
@@ -343,10 +365,15 @@ module bsg_guts
    ,.io_link_reset_i     (io_upstream_link_reset) 
    ,.async_token_reset_i (async_token_reset)   
    
+  //  // out of nodes (fsb interface) 
+  //  ,.core_data_i        ({ciphertext, key_chain})         
+  //  ,.core_valid_i       (core_fsb_valid_lo)
+  //  ,.core_ready_o       (core_cl_ready_lo)
+
    // out of nodes (fsb interface) 
-   ,.core_data_i        (core_fsb_data_lo)         
-   ,.core_valid_i       (core_fsb_valid_lo)
-   ,.core_ready_o       (core_cl_ready_lo)
+   ,.core_data_i        (core_fsb_data_lo_enc)         
+   ,.core_valid_i       (core_fsb_valid_lo_enc)
+   ,.core_ready_o       (core_cl_ready_lo_enc)
    
    // in from i/o
   ,.io_clk_i            (io_master_clk_i) // clk
@@ -357,9 +384,34 @@ module bsg_guts
   ,.io_data_r_o         (im_data_tline_lo)
   ,.io_valid_r_o        (im_valid_tline_lo)
   );
+
+  logic [2047:0] core_cl_data_lo_dec;
+  logic core_cl_valid_lo_dec, core_fsb_yumi_lo_dec, core_fsb_ready_lo_dec;
+
+  logic [127:0] core_cl_data_lo_128;
+
+  assign core_cl_data_lo = core_cl_data_lo_128[flit_width_p-1:0];
+
+  bsg_aes_decrypt decrypt_data (
+    .clk_i(core_clk_i),
+    .reset_i(core_clk_link_reset),
+
+    .data_i(core_cl_data_lo_dec),
+    .v_i(core_cl_valid_lo_dec),
+    // .yumi_i(core_fsb_yumi_lo & core_cl_valid_lo_dec),
+    .yumi_i(core_fsb_yumi_lo),
+
+    .data_o(core_cl_data_lo_128),
+    .v_o(core_cl_valid_lo),
+    // .ready_o(core_fsb_yumi_lo_dec)
+    .ready_o(core_fsb_ready_lo_dec)
+  );
+
   
    // link downstream (on the same side as upstream)
-   bsg_link_ddr_downstream #(.width_p (flit_width_p)
+   bsg_link_ddr_downstream #(
+                           .width_p (2048)
+                          //  .width_p (flit_width_p)
                           ,.channel_width_p (channel_width_p)
                           ,.num_channels_p  (num_channels_p)
                           //,.lg_fifo_depth_p () use default
@@ -375,9 +427,16 @@ module bsg_guts
    ,.io_link_reset_i    (io_downstream_link_reset)       
    
    // into nodes (fsb interface)
-   ,.core_data_o        (core_cl_data_lo)
-   ,.core_valid_o       (core_cl_valid_lo)
-   ,.core_yumi_i        (core_fsb_yumi_lo)
+  //  ,.core_data_o        (core_cl_data_lo)
+  //  ,.core_valid_o       (core_cl_valid_lo)
+  //  ,.core_yumi_i        (core_fsb_yumi_lo)
+
+  //  // into nodes (fsb interface)
+   ,.core_data_o        (core_cl_data_lo_dec)
+   ,.core_valid_o       (core_cl_valid_lo_dec)
+  //  ,.core_yumi_i        (core_fsb_yumi_lo_dec & core_cl_valid_lo)
+  //  ,.core_yumi_i        (core_fsb_yumi_lo_dec)
+   ,.core_yumi_i(core_cl_valid_lo_dec & core_fsb_ready_lo_dec)
    
    // in from i/o
    ,.io_clk_i           (io_clk_tline_i) // clk from upstream's io_clk_r_o

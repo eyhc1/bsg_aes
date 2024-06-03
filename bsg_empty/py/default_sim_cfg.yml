@@ -1,0 +1,6 @@
+
+# Configure the Final Project Test Suite
+
+# This needs to match the parameters of the DUT instantiated in the testbench
+empty: 
+  empty_param: 0

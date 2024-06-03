@@ -3,6 +3,8 @@
 module bsg_aes_decrypt (
     input clk_i,
     input reset_i,
+    // output logic [127:0] ciphertext,
+    // output logic [128 * 15 - 1:0] key_chain,
 
     input [2047:0] data_i,
     output [127:0] data_o,

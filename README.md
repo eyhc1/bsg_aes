@@ -1,5 +1,8 @@
 # Chip-Level Integrated Technology for Advanced Defense and Encryption Layer (CITADEL)
 
+<p align="center">
+  <img src="documents/icon.png" alt="Project Logo">
+</p>
 
 This project implements a hardware-based Advanced Encryption Standard (AES) algorithm, optimized for high-speed, secure chip-to-chip communication. The AES-256 encryption standard is used to ensure robust security, with the project leveraging the **BaseJump STL** framework for integration and testing. 
 
